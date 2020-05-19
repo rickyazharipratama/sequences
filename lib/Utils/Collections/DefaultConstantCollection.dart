@@ -3,8 +3,12 @@ class DefaultConstantCollection{
   static DefaultConstantCollection instance = DefaultConstantCollection();
 
   
-  int defautCurrentStage = 1;
+  String version = "1.0.0";
 
-  double defaultHeightLogo = 80;
+  int defautCurrentStage = -1;
+
+  double defaultSettingHeight = 400;
+
+  double defaultHeightLogo = 75;
   double defaultWidthLogo = 100;
 }

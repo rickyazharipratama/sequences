@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 import 'package:sequences/Utils/ThemeUtil.dart';
-import 'package:sequences/Views/LandingPage.dart';
+import 'package:sequences/Views/Pages/StagesPage.dart';
 
 class SequenceAppPresenterView implements BasePresenterView{
   
@@ -17,7 +17,7 @@ class SequenceAppPresenterView implements BasePresenterView{
 
   Widget mainWidget(bool isDarkTheme){
     return MaterialApp(
-      home: LandingPage(),
+      home: StagesPage(),
       theme: isDarkTheme ? ThemeUtil.instance.darkTheme : ThemeUtil.instance.lightTheme,
     );
   }

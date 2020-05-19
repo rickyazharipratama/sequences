@@ -3,3 +3,9 @@ enum PageStatus{
   loading,
   ready
 }
+
+enum KeyboardAction{
+  hint,
+  erase,
+  submit
+}

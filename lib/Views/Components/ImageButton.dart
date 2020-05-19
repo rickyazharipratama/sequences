@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SettingButton extends StatelessWidget {
+class ImageButton extends StatelessWidget {
   final VoidCallback callback;
   final String image;
+  final Color color;
+  final double size;
 
-  SettingButton({@required this.callback, @required this.image});
+  ImageButton({@required this.callback, @required this.image, this.color, this.size : 30});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,9 @@ class SettingButton extends StatelessWidget {
         child: Image.asset(
            image,
            alignment: Alignment.center,
-           color: Theme.of(context).primaryTextTheme.bodyText1.color,
-           width: 30,
-           height: 30,
+           color: color == null ? Theme.of(context).primaryTextTheme.bodyText1.color : color,
+           width: size,
+           height: size,
            fit: BoxFit.contain,
         ),
       ),

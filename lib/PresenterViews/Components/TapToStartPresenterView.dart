@@ -24,5 +24,4 @@ class TapToStartPresenterView{
     });
     animController.forward();
   }
-
 }

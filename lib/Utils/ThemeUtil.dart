@@ -25,6 +25,8 @@ class ThemeUtil{
     disabledColor: Color(0xFFdcdcdc),
     //switcher on
     focusColor: Color(0xffffffff),
+    //elevationColor
+    dividerColor: Color(0x77000000),
     primaryTextTheme: TextTheme(
       //text or
       bodyText2: TextStyle(
@@ -47,7 +49,7 @@ class ThemeUtil{
       //secondary button
       headline4: TextStyle(
         color: Color(0xff06D6A0),
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: FontWeight.w700
       ),
       subtitle1: TextStyle(
@@ -80,6 +82,8 @@ class ThemeUtil{
     disabledColor: Color(0xFFdcdcdc),
     //switcher on
     focusColor: Color(0xffffffff),
+    //elevationColor
+    dividerColor: Color(0x77000000),
     primaryTextTheme: TextTheme(
       //text or
       bodyText2: TextStyle(
@@ -102,7 +106,7 @@ class ThemeUtil{
       //secondary button
       headline4: TextStyle(
         color: Color(0xff06D6A0),
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: FontWeight.w700
       ),
       subtitle1: TextStyle(

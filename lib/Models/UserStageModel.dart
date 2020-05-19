@@ -9,4 +9,7 @@ class UserStageModel{
   retrieveCurrentStage() async{
     currentStage =  await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.currentStage);
   }
+  saveToStore() async{
+    (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.currentStage, currentStage);
+  }
 }

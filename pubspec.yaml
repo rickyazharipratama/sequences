@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   shared_preferences: ^0.5.7+2
+  navigatorium:
+    path: /Users/lumos/personal/project/flutter-plugin/navigatorium
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +24,12 @@ flutter:
     - assets/images/logo-light.png
     - assets/images/logo-dark.png
     - assets/images/gear.png
+    - assets/images/close.png
+    - assets/images/check.png
+    - assets/images/light-on.png
+    - assets/images/eraser.png
+
+    - assets/stages/basic.json
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

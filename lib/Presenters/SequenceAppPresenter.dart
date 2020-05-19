@@ -17,6 +17,6 @@ class SequenceAppPresenter extends BasePresenter{
   void initiateData() async{
     super.initiateData();
     setUsedDarkTheme = (await SharedPreferenceHelper.instance.pref()).getBool(SharedPreferencesConstantCollection.instance.isUsingDarkTheme);
-    view.updateState(null);
+    view.updateState((){});
   }
 }

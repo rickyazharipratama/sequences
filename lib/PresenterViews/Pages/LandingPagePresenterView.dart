@@ -1,8 +1,11 @@
 
 import 'package:flutter/widgets.dart';
+import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Views/Components/TapToStart.dart';
+import 'package:sequences/Views/Pages/LevelPage.dart';
+import 'package:sequences/Views/Pages/StagesPage.dart';
 import 'package:sequences/Views/Widgets/ContinueWrapper.dart';
 
 class LandingPagePresenterView implements BasePresenterView{
@@ -25,16 +28,53 @@ class LandingPagePresenterView implements BasePresenterView{
 
   Widget bottomSection(int currentStages){
     if(status == PageStatus.ready){
-      if(currentStages >= 0){
+      if(currentStages > 1){
         // button section;
-        return ContinueWrapper();
+        return ContinueWrapper(
+          onContinue: gotoStages,
+          onLevelSelect: goToLevelSelect,
+          onNewGame: goToNewGame,
+        );
       }
       // tap to startSection;
       return Padding(
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
-        child: TapToStart(),
+        child: TapToStart(
+          text: "Tap to Play",
+        ),
       );
     }
-    return null;
+    return Container();
+  }
+
+  goToNewGame() async{
+    await Navigatorium.instance.pushWithNoAnimate(
+      currentContext(),
+      child: StagesPage.resetGame()
+    );
+  }
+
+  goToLevelSelect() async{
+    int level = await Navigatorium.instance.pushWithNoAnimate(
+      currentContext(),
+      child: LevelPage()
+    );
+    print("level : "+level.toString());
+    if(level > 0){
+      await Navigatorium.instance.pushWithNoAnimate(
+        currentContext(),
+        child: StagesPage.toContinue(
+          isContinue: true,
+          spesificStage: level,
+        )
+      );
+    }
+  }
+
+  Future<void> gotoStages() async{
+    await Navigatorium.instance.pushWithNoAnimate(
+      currentContext(),
+      child: StagesPage.toContinue()
+    );
   }
 }

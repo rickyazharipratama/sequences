@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:sequences/PresenterViews/Widgets/ContinueWrapperPresenterView.dart';
 import 'package:sequences/Views/Components/LineSeparator.dart';
 import 'package:sequences/Views/Components/PrimaryButton.dart';
 import 'package:sequences/Views/Components/SecondaryButton.dart';
 
-class ContinueWrapper extends StatelessWidget with ContinueWrapperPresenterView{
+class ContinueWrapper extends StatelessWidget{
 
+  final VoidCallback onContinue;
+  final VoidCallback onNewGame;
+  final VoidCallback onLevelSelect;
 
+  ContinueWrapper({
+    @required this.onContinue,
+    @required this.onNewGame,
+    @required this. onLevelSelect
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class ContinueWrapper extends StatelessWidget with ContinueWrapperPresenterView{
             vertical: 5,
             horizontal: (MediaQuery.of(context).size.width/4) / 2,
           ),
-          child: PrimaryButton(callback: continueGame, text: "CONTINUE"),
+          child: PrimaryButton(callback: onContinue, text: "CONTINUE"),
         ),
 
         Row(
@@ -64,7 +71,7 @@ class ContinueWrapper extends StatelessWidget with ContinueWrapperPresenterView{
                     right: 5
                   ),
                   child: SecondaryButton(
-                    callback: selectLevel,
+                    callback: onLevelSelect,
                     text: "Levels",
                   ),
                 ),
@@ -75,7 +82,7 @@ class ContinueWrapper extends StatelessWidget with ContinueWrapperPresenterView{
                     left: 5
                   ),
                   child: SecondaryButton(
-                    callback: resetGame,
+                    callback: onNewGame,
                     text: "New Game",
                   ),
                 ),

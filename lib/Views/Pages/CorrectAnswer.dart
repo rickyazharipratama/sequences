@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Pages/CorrectAnswerPresenterView.dart';
+import 'package:sequences/Views/Components/TapToStart.dart';
 
 class CorrectAnswer extends StatefulWidget {
   @override
@@ -17,66 +18,88 @@ class _CorrectAnswerState extends State<CorrectAnswer> with CorrectAnswerPresent
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            color: Theme.of(context).primaryColor,
-            height: (MediaQuery.of(context).size.height / 2) * anim.value,
-            width: MediaQuery.of(context).size.width,
+    return GestureDetector(
+      onTap: goToNextQuestion,
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              color: Theme.of(context).primaryColor,
+              height: (MediaQuery.of(context).size.height / 2) * anim.value,
+              width: MediaQuery.of(context).size.width,
+            ),
           ),
-        ),
 
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            color: Theme.of(context).primaryColor,
-            height: ( MediaQuery.of(context).size.height / 2 ) * anim.value,
-            width: MediaQuery.of(context).size.width,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              color: Theme.of(context).primaryColor,
+              height: ( MediaQuery.of(context).size.height / 2 ) * anim.value,
+              width: MediaQuery.of(context).size.width,
+            ),
           ),
-        ),
 
-        Positioned.fill(
-          child: AnimatedCrossFade(
-            crossFadeState: isTransitionReady ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-            duration: Duration(milliseconds: 300),
-            firstChild: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                    Image.asset(
-                      "assets/images/check.png",
-                      color: Theme.of(context).focusColor,
-                      width: 75,
-                      height: 75,
-                      fit: BoxFit.contain,
-                      alignment: Alignment.center,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 15
-                      ),
-                      child: Text(
-                        "Correct!",
-                        maxLines: 1,
-                        style: Theme.of(context).primaryTextTheme.button.apply(
-                          fontSizeDelta: 16,
+          Positioned.fill(
+            child:  Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: AnimatedCrossFade(
+                crossFadeState: isTransitionReady ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                duration: Duration(milliseconds: 300),
+                firstChild: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                        Image.asset(
+                          "assets/images/check.png",
+                          color: Theme.of(context).focusColor,
+                          width: 75,
+                          height: 75,
+                          fit: BoxFit.contain,
+                          alignment: Alignment.center,
                         ),
-                      ),
-                    )
-                ],
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 15
+                          ),
+                          child: Text(
+                            "Correct!",
+                            maxLines: 1,
+                            style: Theme.of(context).primaryTextTheme.button.apply(
+                              fontSizeDelta: 14,
+                            ),
+                          ),
+                        )
+                    ],
+                  ),
+                ),
+                secondChild: Container(),
               ),
             ),
-            secondChild: Container(),
+          ),
+
+          Positioned(
+            bottom: MediaQuery.of(context).padding.bottom + 20,
+            left: 0,
+            right: 0,
+            child: AnimatedCrossFade(
+              crossFadeState: isTransitionReady ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              duration: Duration(milliseconds: 300),
+              firstChild: isTransitionReady ? TapToStart(
+                  text: "Tap to Continue",
+                  color: Theme.of(context).focusColor,
+                )
+                : Container(),
+                secondChild: Container(),
+            )
           )
-        )
-      ],
+        ],
+      ),
     );
   }
 

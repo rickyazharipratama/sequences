@@ -33,7 +33,10 @@ class StagesPagePresenter extends BasePresenter{
   StreamSink<bool> get shakerSinker => _shakerStream.sink;
   Stream<bool> get shakerStream => _shakerStream.stream;
 
-  StagesPagePresenter({this.view});
+  final bool isContinue;
+  final int fromStage;
+
+  StagesPagePresenter({this.view, this. isContinue, this.fromStage});
 
   UserStageModel stages;
   SequenceModel sequence;
@@ -42,10 +45,16 @@ class StagesPagePresenter extends BasePresenter{
   @override
   void initiateData() async{
     super.initiateData();
-    stages =  UserStageModel()..retrieveCurrentStage();
-    if(stages.currentStage < 0){
+    stages = UserStageModel();
+    if(isContinue){
+      if(fromStage < 0){
+        await stages.retrieveCurrentStage();
+      }else{
+        stages.currentStage = fromStage;
+      }
+    }else{
       stages.currentStage = 1;
-      await stages.saveToStore();
+      stages.saveToStore();
     }
     sequence = SequenceModel();
     await getQuestion();
@@ -69,8 +78,8 @@ class StagesPagePresenter extends BasePresenter{
     // compare the answer with real answer
     if(intAnswer == sequence.answer){
       //correct answer
-      // stages.currentStage++;
-      // await stages.saveToStore();
+      stages.goToNextStage();
+      await stages.saveToStore();
       await view.goToCorrectAnswer();
       await getQuestion();
     }else{

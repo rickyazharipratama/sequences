@@ -23,4 +23,7 @@ class StagesPagePresenterView implements BasePresenterView{
     return true;
   }
 
+  Future<bool> willPop() async{
+    return true;
+  }
 }

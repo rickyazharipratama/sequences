@@ -1,21 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 
-class ContinueWrapperPresenterView implements BasePresenterView{
-
-
-  continueGame(){
-
-  }
-
-  resetGame(){
-
-  }
-
-  selectLevel(){
-
-  }
-
+class LevelPagePresenterView implements BasePresenterView{
   @override
   BuildContext currentContext() {
     throw UnimplementedError();
@@ -24,4 +10,5 @@ class ContinueWrapperPresenterView implements BasePresenterView{
   @override
   void updateState(callback) {
   }
+  
 }

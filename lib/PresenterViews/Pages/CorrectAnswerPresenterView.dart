@@ -33,6 +33,13 @@ class CorrectAnswerPresenterView implements BasePresenterView{
     throw UnimplementedError();
   }
 
+  void goToNextQuestion(){
+    if(isTransitionReady){
+      Navigator.of(currentContext()).pop();
+    }
+  }
+
+
   @override
   void updateState(callback) {
   }

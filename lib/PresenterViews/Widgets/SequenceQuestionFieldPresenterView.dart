@@ -106,6 +106,5 @@ class SequenceQuestionFieldPresenterView implements BasePresenterView{
 
   @override
   void updateState(callback) {
-    // TODO: implement updateState
   }
 }

@@ -8,35 +8,51 @@ class SharedPreferenceHelper{
     return await SharedPreferences.getInstance();
   }
 
-  Future<int> getInt(String key) async{
+  Future<int> getInt(String key,{int error: -1}) async{
     try{
-      return (await pref()).getInt(key);
+      int val =  (await pref()).getInt(key);
+      if(val != null){
+        return val;
+      }
+      return error;
     } on Exception{
-       return -1;
+       return error;
     }
   }
 
-  Future<String> getString(String key)async{
+  Future<String> getString(String key,{String error})async{
     try{
-      return (await pref()).getString(key);
+      String val = (await pref()).getString(key);
+      if(val != null){
+        return val;
+      }
+      return error;
     } on Exception{
-      return null;
+      return error;
     }
   }
 
   Future<bool> getBool(String key,{bool error : false}) async{
     try{
-      return (await pref()).getBool(key);
+      bool val =  (await pref()).getBool(key);
+      if(val != null){
+        return val;
+      }
+      return error;
     }on Exception{
       return error;
     }
   }
   
-  Future<double> getDouble(String key) async{
+  Future<double> getDouble(String key,{double error : -1}) async{
     try{
-      return (await pref()).getDouble(key);
+      double val = (await pref()).getDouble(key);
+      if(val != null){
+        return val;
+      }
+      return error;
     }on Exception{
-      return -1;
+      return error;
     }
   }
 

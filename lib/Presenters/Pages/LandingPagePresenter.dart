@@ -14,15 +14,21 @@ class LandingPagePresenter extends BasePresenter{
 
 
   @override
-  void initiateData() {
+  void initiateData() async{
     super.initiateData();
-    currentStages.retrieveCurrentStage();
+    await currentStages.retrieveCurrentStage();
     view.updateState(view.makeStatusReady);
   }
-
 
   @override
   void destroyObject() {
     super.destroyObject();
   }
+
+  Future<void> goToStage() async{
+    await view.gotoStages();
+    currentStages.retrieveCurrentStage();
+    view.updateState(() { });
+  }
+
 }

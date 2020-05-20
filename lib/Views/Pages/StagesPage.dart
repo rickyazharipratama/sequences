@@ -8,6 +8,13 @@ import 'package:sequences/Views/Widgets/SequencesKeyboard.dart';
 import 'package:sequences/Views/Widgets/Settings.dart';
 
 class StagesPage extends StatefulWidget {
+
+  final bool isContinue;
+  final int spesificStage;
+
+  StagesPage.toContinue({this.isContinue = true, this.spesificStage : -1});
+  StagesPage.resetGame({this.isContinue = false, this.spesificStage : -1});
+
   @override
   _StagesPageState createState() => new _StagesPageState();
 }
@@ -21,60 +28,65 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
   void initState() {
     super.initState();
     presenter = StagesPagePresenter(
-      view: this
+      view: this,
+      fromStage: widget.spesificStage,
+      isContinue: widget.isContinue
     )..initiateData();
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return BasePage(
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: Stack(
+    return WillPopScope(
+          onWillPop: willPop,
+          child: BasePage(
+            child: Column(
               children: <Widget>[
-                //main content
-                Positioned.fill(
-                  child: SequenceQuestionField(
-                    shakerStreamer: presenter.shakerStream,
-                    streamer: presenter.sequenceStream,
-                  ),
+                Expanded(
+                  child: Stack(
+                    children: <Widget>[
+                      //main content
+                      Positioned.fill(
+                        child: SequenceQuestionField(
+                          shakerStreamer: presenter.shakerStream,
+                          streamer: presenter.sequenceStream,
+                        ),
+                      ),
+
+                      Positioned(
+                        top: MediaQuery.of(context).padding.top + 5,
+                        right: 10,
+                        child: ImageButton(
+                          callback: (){
+                            print("show setting dialog");
+                            showModalBottomSheet(
+                              context: context, 
+                              builder: (context) => Settings(
+                                isNeedMainMenu: true,
+                              ));
+                          },
+                          image: "assets/images/gear.png",
+                        ),
+                      ),
+                    ]
+                  ), 
                 ),
 
-                Positioned(
-                  top: MediaQuery.of(context).padding.top + 5,
-                  right: 10,
-                  child: ImageButton(
-                    callback: (){
-                      print("show setting dialog");
-                      showModalBottomSheet(
-                        context: context, 
-                        builder: (context) => Settings(
-                          isNeedMainMenu: true,
-                        ));
-                    },
-                    image: "assets/images/gear.png",
+                Padding(
+                  padding : EdgeInsets.only(
+                    bottom: MediaQuery.of(context).padding.bottom,
+                  ),
+                  child: SequencesKeyboard(
+                    actionSinker: presenter.keyActionSinker,
+                    numberSinker: presenter.keyNumberSinker,
+                    actionStream: presenter.keyActionStream,
+                    numberSteam: presenter.keyNumberStream,
+                    answerSinker: presenter.answerSinker,
                   ),
                 ),
-              ]
-            ), 
+              ],
+            )
           ),
-
-          Padding(
-            padding : EdgeInsets.only(
-              bottom: MediaQuery.of(context).padding.bottom,
-            ),
-            child: SequencesKeyboard(
-              actionSinker: presenter.keyActionSinker,
-              numberSinker: presenter.keyNumberSinker,
-              actionStream: presenter.keyActionStream,
-              numberSteam: presenter.keyNumberStream,
-              answerSinker: presenter.answerSinker,
-            ),
-          ),
-        ],
-      )
     );
   }
 

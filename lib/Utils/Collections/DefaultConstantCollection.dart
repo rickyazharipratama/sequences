@@ -5,7 +5,9 @@ class DefaultConstantCollection{
   
   String version = "1.0.0";
 
-  int defautCurrentStage = -1;
+  //STAGES
+  int defautCurrentStage = 1;
+  int totalStage = 10;
 
   double defaultSettingHeight = 400;
 

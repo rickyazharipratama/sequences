@@ -28,6 +28,8 @@ flutter:
     - assets/images/check.png
     - assets/images/light-on.png
     - assets/images/eraser.png
+    - assets/images/check-circle.png
+    - assets/images/lock.png
 
     - assets/stages/basic.json
   #  - images/a_dot_burr.jpeg

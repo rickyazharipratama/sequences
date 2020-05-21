@@ -37,6 +37,7 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
+          color: Theme.of(context).backgroundColor,
           child: Stack(
             children: <Widget>[
                 // Main Content

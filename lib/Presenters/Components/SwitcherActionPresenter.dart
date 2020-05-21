@@ -8,13 +8,22 @@ class SwitcherActionPresenter extends BasePresenter{
 
   final SwitcherActionPresenterView view;
   final StreamSink sinker;
+  final bool firstVal;
 
   bool isVal = false;
 
-  SwitcherActionPresenter({@required this.view, @required this.sinker});
+  SwitcherActionPresenter({@required this.view, @required this.sinker, this.firstVal});
+
+  @override
+  initiateData(){
+    super.initiateData();
+    isVal = firstVal;
+    view.updateState(view.makePageReady);
+  }
 
   onChangeSwitcher(bool val){
     isVal = val;
+    print("switcher :"+isVal.toString());
     sinker.add(val);
     view.updateState((){});
   }

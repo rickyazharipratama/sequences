@@ -74,9 +74,9 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                        children: List.generate(diff, (index){
-                         int part = start + index + 1;
+                         int part = start + index;
                          return Level(
-                           label: "Level "+part.toString(),
+                           label: "Level "+(part+1).toString(),
                            isOpen: presenter.stages.currentStage >= part,
                            callback: (){
                               if(presenter.stages.currentStage >= part){

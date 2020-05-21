@@ -4,13 +4,12 @@ import 'package:sequences/Models/ConfigurationModel.dart';
 import 'package:sequences/Models/SoundSettingModel.dart';
 import 'package:sequences/PresenterViews/Widgets/SettingsPresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class SettingsPresenter extends BasePresenter{
 
 
   final SettingsPresenterView view;
-  SoundSettingModel sounds;
-  ConfigurationModel config;
 
   StreamController<bool> _soundStream = StreamController();
   StreamController<bool> _musicStream = StreamController();
@@ -29,31 +28,29 @@ class SettingsPresenter extends BasePresenter{
   SettingsPresenter(this.view);
 
   @override
-  void initiateData() {
+  void initiateData() async{
     super.initiateData();
-    
-    sounds = SoundSettingModel()
-    ..retieveSoundSetting()
-    ..retrieveMusicSetting();
-    
-    config = ConfigurationModel()
-    ..retrieveThemeConfiguration();
-    
     soundStream.listen(onSoundSettingChanged);
     musicStream.listen(onMusicSettingChanged);
-    view.updateState(() {});
+    themeStream.listen(onThemeChanged);
+    view.updateState(view.pageIsReady);
   }
 
 
   void onSoundSettingChanged(bool val){
-    sounds.setSoundActive = val;
-    sounds.saveSoundSetting();
+    SequencesApp.of(view.currentContext()).presenter.onChangeSound(val);
   }
 
   void onMusicSettingChanged(bool val){
-    sounds.setMusicActive = val;
-    sounds.saveMusicSetting();
+    SequencesApp.of(view.currentContext()).presenter.onChangeMusic(val);
   }
+
+  void onThemeChanged(bool val) async{
+    SequencesApp.of(view.currentContext()).presenter.onChangeTheme(val);
+  }
+
+  SoundSettingModel get sounds => SequencesApp.of(view.currentContext()).presenter.sounds;
+  ConfigurationModel get config => SequencesApp.of(view.currentContext()).presenter.config;
 
   @override
   void destroyObject() {

@@ -7,24 +7,26 @@ class CheckBoxActionPresenter extends BasePresenter{
 
   final StreamSink sinker;
   final CheckBoxActionPresenterView view;
+  final bool isChecked;
 
-  bool _isChecked = false;
+  bool _isCheck;
 
-  CheckBoxActionPresenter({this.sinker, this.view});
+  bool get isCheck => _isCheck;
+  set setCheck(bool val){_isCheck = val;}
 
-  bool get isChecked => _isChecked;
-  set setChecked(bool val){_isChecked = val;}
+  CheckBoxActionPresenter({this.sinker, this.view, this.isChecked});
 
   @override
   void initiateData() async{
-    
     super.initiateData();
+    setCheck = isChecked;
+    print("is Checked  :" + isChecked.toString());
+    view.updateState(view.makeStatusReady);
   }
 
   oncheckedChange(bool val){
-    view.updateState((){
-      setChecked = val;
-      sinker.add(val);
-    });
+     setCheck = val;
+     sinker.add(val);
+    view.updateState((){});
   }
 }

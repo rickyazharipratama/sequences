@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Components/CheckBoxActionPresenterView.dart';
 import 'package:sequences/Presenters/Components/CheckBoxActionPresenter.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 
 class CheckBoxAction extends StatefulWidget {
 
@@ -23,15 +24,19 @@ class _CheckBoxActionState extends State<CheckBoxAction> with CheckBoxActionPres
   @override
   void initState() {
     super.initState();
-    presenter = CheckBoxActionPresenter(view: this, sinker: widget.sinker)
-    ..setChecked = widget.firstValue
+    presenter = CheckBoxActionPresenter(view: this, sinker: widget.sinker, isChecked: widget.firstValue)
     ..initiateData();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+        if(state == PageStatus.ready){
+          print("Change from label");
+          presenter.oncheckedChange(!presenter.isCheck);
+        }
+      },
       child: Container(
         child: Row(
           children: <Widget>[
@@ -42,10 +47,14 @@ class _CheckBoxActionState extends State<CheckBoxAction> with CheckBoxActionPres
               ),
             ),
 
-            Checkbox(
-              value: presenter.isChecked == null ? false :  presenter.isChecked,
-              onChanged: presenter.oncheckedChange
-            )
+            state == PageStatus.ready ? 
+              Checkbox(
+                value: presenter.isCheck,
+                onChanged: presenter.oncheckedChange,
+                activeColor: Theme.of(context).focusColor,
+                checkColor: Theme.of(context).primaryColor,
+              )
+              : Container()
           ],
         ),
       )

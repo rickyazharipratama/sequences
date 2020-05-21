@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Widgets/SettingsPresenterView.dart';
 import 'package:sequences/Presenters/SettingsPresenter.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Views/Components/CheckBoxAction.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/ListButton.dart';
@@ -38,88 +39,90 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
         MediaQuery.of(context).padding.top + 5,
         10,
         5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(),
-              ),
-              ImageButton(
-                image: "assets/images/close.png",
-                callback: (){Navigator.of(context, rootNavigator: true).pop();},
-                color: Theme.of(context).focusColor,
-                size: 25,
-              ),
-            ],
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(top: 15),
-          ),
-
-          SwitcherAction(
-            label: "Sound",
-            sinker: presenter.soundStreamSink,
-            firstValue: presenter.sounds.isSoundActive
-          ),
-
-          SwitcherAction(
-            label: "Music",
-            sinker: presenter.musicStreamSink,
-            firstValue: presenter.sounds.isMusicActive,  
-          ),
-
-          CheckBoxAction(
-            firstValue: presenter.config.isDarkTheme,
-            label: "Using Dark Theme",
-            sinker: presenter.themeSink,
-          ),
-
-          ListButton(
-            callback: null,
-            label: "Privacy Policy",
-          ),
-
-          ListButton(
-            callback: null,
-            label: "Credits",
-          ),
-
-          widget.isNeedMainMenu?
-            ListButton(
-              callback: null,
-              label: "Back to Main Menu",
-            )
-          :Container(),
-
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
+      child: stateStatus == PageStatus.ready ? 
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            
+            Row(
               children: <Widget>[
                 Expanded(
                   child: Container(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    right: 5,
-                    bottom: 5
-                  ),
-                  child: Text(
-                    "V "+DefaultConstantCollection.instance.version,
-                    maxLines: 1,
-                    textAlign: TextAlign.right,
-                    style: Theme.of(context).primaryTextTheme.button
-                  ),
-                )
+                ImageButton(
+                  image: "assets/images/close.png",
+                  callback: (){Navigator.of(context, rootNavigator: true).pop();},
+                  color: Theme.of(context).focusColor,
+                  size: 25,
+                ),
               ],
+            ),
+
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+            ),
+
+            SwitcherAction(
+              label: "Sound",
+              sinker: presenter.soundStreamSink,
+              firstValue: presenter.sounds.isSoundActive
+            ),
+
+            SwitcherAction(
+              label: "Music",
+              sinker: presenter.musicStreamSink,
+              firstValue: presenter.sounds.isMusicActive,  
+            ),
+
+            CheckBoxAction(
+              firstValue: presenter.config.isDarkTheme,
+              label: "Using Dark Theme",
+              sinker: presenter.themeSink,
+            ),
+
+            ListButton(
+              callback: null,
+              label: "Privacy Policy",
+            ),
+
+            ListButton(
+              callback: null,
+              label: "Credits",
+            ),
+
+            widget.isNeedMainMenu?
+              ListButton(
+                callback: null,
+                label: "Back to Main Menu",
+              )
+            :Container(),
+
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Expanded(
+                    child: Container(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 5,
+                      bottom: 5
+                    ),
+                    child: Text(
+                      "V "+DefaultConstantCollection.instance.version,
+                      maxLines: 1,
+                      textAlign: TextAlign.right,
+                      style: Theme.of(context).primaryTextTheme.button
+                    ),
+                  )
+                ],
+              )
             )
-          )
-        ],
-      )
+          ],
+        )
+      : Container()
     );
   }
 

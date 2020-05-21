@@ -57,7 +57,7 @@ class ThemeUtil{
         fontSize: 18,
         fontWeight: FontWeight.w500
       )
-    )
+    ),
   );
 
 

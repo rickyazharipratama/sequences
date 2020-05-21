@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Components/SwitcherActionPresenterView.dart';
 import 'package:sequences/Presenters/Components/SwitcherActionPresenter.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 
 class SwitcherAction extends StatefulWidget {
 
@@ -23,35 +24,55 @@ class _SwitcherActionState extends State<SwitcherAction> with SwitcherActionPres
   @override
   void initState() {
     super.initState();
-    presenter = SwitcherActionPresenter(view: this, sinker: widget.sinker)
-    ..initiateData()
-    ..isVal = widget.firstValue;
+    print("switcher + "+widget.label+" is "+widget.firstValue.toString());
+    presenter = SwitcherActionPresenter(view: this, sinker: widget.sinker, firstVal: widget.firstValue)
+    ..initiateData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        children: <Widget>[
-          
-          Expanded(
-            child: Text(
-              widget.label,
-              textAlign: TextAlign.left,
-              maxLines: 1,
-              style: Theme.of(context).primaryTextTheme.button
+    return GestureDetector(
+          onTap: (){
+            if(state == PageStatus.ready){
+              presenter.onChangeSwitcher(!presenter.isVal);
+            }
+          },
+          child: Row(
+          children: <Widget>[
+            
+            Expanded(
+              child: Text(
+                widget.label,
+                textAlign: TextAlign.left,
+                maxLines: 1,
+                style: Theme.of(context).primaryTextTheme.button
+              ),
             ),
-          ),
 
-          Padding(
-            padding: EdgeInsets.only(
-              left: 5
-            ),
-            child: Switch(
-              value: presenter.isVal == null ? false : presenter.isVal, 
-              onChanged: presenter.onChangeSwitcher
-            ),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.only(
+                left: 5
+              ),
+              child: state == PageStatus.ready ? 
+                Switch(
+                  value: presenter.isVal, 
+                  onChanged: presenter.onChangeSwitcher,
+                  activeColor: Theme.of(context).focusColor,
+                  inactiveThumbColor: Theme.of(context).disabledColor,
+                )
+                : Container()
+            )
+          ],
+      ),
     );
+  }
+
+  @override
+  BuildContext currentContext() => context;
+
+  @override
+  void updateState(callback) {
+    super.updateState(callback);
+    setState(callback);
   }
 }

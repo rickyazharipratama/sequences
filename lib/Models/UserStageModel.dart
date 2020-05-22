@@ -21,4 +21,8 @@ class UserStageModel{
       hintCounter--;
     }
   }
+
+  resetHintCount(){
+    hintCounter = 3;
+  }
 }

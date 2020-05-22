@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/ThemeUtil.dart';
-import 'package:sequences/Views/Pages/LandingPage.dart';
+import 'package:sequences/Views/Pages/SplashPage.dart';
 
 class SequenceAppPresenterView implements BasePresenterView{
   
@@ -22,7 +22,7 @@ class SequenceAppPresenterView implements BasePresenterView{
     print("using d.theme => "+isDarkTheme.toString());
     if(state == PageStatus.ready){
       return MaterialApp(
-        home: LandingPage(),
+        home: SplashPage(),
         theme: isDarkTheme ? ThemeUtil.instance.darkTheme : ThemeUtil.instance.lightTheme,
       );
     }

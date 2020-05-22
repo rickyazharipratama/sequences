@@ -4,7 +4,9 @@ import 'package:sequences/Models/SequenceModel.dart';
 import 'package:sequences/Models/UserStageModel.dart';
 import 'package:sequences/PresenterViews/Pages/StagesPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class StagesPagePresenter extends BasePresenter{
 
@@ -36,6 +38,9 @@ class StagesPagePresenter extends BasePresenter{
   final bool isContinue;
   final int fromStage;
 
+  int duration = 0;
+  int unCorrectAnswer = 0;
+
   StagesPagePresenter({this.view, this. isContinue, this.fromStage});
 
   UserStageModel stages;
@@ -56,9 +61,11 @@ class StagesPagePresenter extends BasePresenter{
       stages.currentStage = 1;
       stages.saveToStore();
     }
+    sendCurrentScreen(DefaultConstantCollection.instance.stagePage);
     sequence = SequenceModel();
     await getQuestion();
     answerStream.listen(onReceiveAnswerListener);
+    duration = DateTime.now().millisecondsSinceEpoch;
   }
 
   @override
@@ -78,12 +85,44 @@ class StagesPagePresenter extends BasePresenter{
     // compare the answer with real answer
     if(intAnswer == sequence.answer){
       //correct answer
+      int diff = DateTime.now().millisecondsSinceEpoch - duration;
+      String diffTimeFormat = CommonUtils.instance.milliSecondToTime(diff);
+      sendAnalyticEvent(
+        name: DefaultConstantCollection.instance.answerDuration,
+        params: {
+          "date" : DateTime.now().toString(),
+          "level" : stages.currentStage.toString(),
+          "duration": diff,
+          "duration_tim_format":diffTimeFormat
+        }
+      );
+      sendAnalyticEvent(
+        name: DefaultConstantCollection.instance.hintCount,
+        params: {
+          "date": DateTime.now().toString(),
+          "level": stages.currentStage.toString(),
+          "hint_left": 3 - stages.hintCounter
+        }
+      );
+
+      sendAnalyticEvent(
+        name: DefaultConstantCollection.instance.uncorrectAnswer,
+        params: {
+          "date" : DateTime.now().toString(),
+          "level": stages.currentStage.toString(),
+          "uncorrect": unCorrectAnswer
+        }
+      );
       stages.goToNextStage();
       await stages.saveToStore();
       await view.goToCorrectAnswer();
+      unCorrectAnswer = 0;
+      duration = DateTime.now().millisecondsSinceEpoch;
+      stages.resetHintCount();
       await getQuestion();
     }else{
       //wrong answer
+      unCorrectAnswer++;
       shakerSinker.add(true);
     }
   }

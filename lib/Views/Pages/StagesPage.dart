@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Pages/StagesPagePresenterView.dart';
 import 'package:sequences/Presenters/Pages/StagesPagePresenter.dart';
+import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Pages/BasePage.dart';
 import 'package:sequences/Views/Widgets/SequenceQuestionField.dart';
@@ -57,13 +58,16 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                         top: MediaQuery.of(context).padding.top + 5,
                         right: 10,
                         child: ImageButton(
-                          callback: (){
+                          callback: () async{
                             print("show setting dialog");
-                            showModalBottomSheet(
+                            String res = await showModalBottomSheet(
                               context: context, 
                               builder: (context) => Settings(
                                 isNeedMainMenu: true,
                               ));
+                            if(res == DefaultConstantCollection.instance.mainMenuFlag){
+                              Navigator.of(context).pop();
+                            }
                           },
                           image: "assets/images/gear.png",
                         ),

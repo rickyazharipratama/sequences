@@ -45,11 +45,14 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                       right: 10,
                     ),
                     child: ImageButton(
-                      callback: (){
+                      callback: () async{
                         print("show setting dialog");
-                        showModalBottomSheet(
+                        String res = await showModalBottomSheet(
                           context: context, 
                           builder: (context) => Settings());
+                        if(res == DefaultConstantCollection.instance.mainMenuFlag){
+                          Navigator.of(context).pop();
+                        }
                       },
                       image: "assets/images/gear.png",
                     ),

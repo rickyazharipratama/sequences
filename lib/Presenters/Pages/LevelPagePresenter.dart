@@ -1,6 +1,7 @@
 import 'package:sequences/Models/UserStageModel.dart';
 import 'package:sequences/PresenterViews/Pages/LevelPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 
 class LevelPagePresenter extends BasePresenter{
 
@@ -12,6 +13,7 @@ class LevelPagePresenter extends BasePresenter{
   @override
   void initiateData() async{
     super.initiateData();
+    sendCurrentScreen(DefaultConstantCollection.instance.levelSelectPage);
     await stages.retrieveCurrentStage();
     view.updateState(() {});
   }

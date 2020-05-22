@@ -93,7 +93,9 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
 
             widget.isNeedMainMenu?
               ListButton(
-                callback: null,
+                callback: (){
+                  Navigator.of(context).pop(DefaultConstantCollection.instance.mainMenuFlag);
+                },
                 label: "Back to Main Menu",
               )
             :Container(),

@@ -1,6 +1,7 @@
 import 'package:sequences/Models/UserStageModel.dart';
 import 'package:sequences/PresenterViews/Pages/LandingPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 
 class LandingPagePresenter extends BasePresenter{
 
@@ -16,6 +17,7 @@ class LandingPagePresenter extends BasePresenter{
   @override
   void initiateData() async{
     super.initiateData();
+    sendCurrentScreen(DefaultConstantCollection.instance.landingPage);
     await currentStages.retrieveCurrentStage();
     view.updateState(view.makeStatusReady);
   }

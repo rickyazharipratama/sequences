@@ -13,7 +13,9 @@ dependencies:
   shared_preferences: ^0.5.7+2
   navigatorium:
     path: /Users/lumos/personal/project/flutter-plugin/navigatorium
-
+  in_app_update: ^1.1.11
+  firebase_analytics: ^5.0.11
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -30,6 +32,7 @@ flutter:
     - assets/images/eraser.png
     - assets/images/check-circle.png
     - assets/images/lock.png
+    - assets/images/coret-logo.png
 
     - assets/stages/basic.json
   #  - images/a_dot_burr.jpeg

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>97059408198-knngmrttfm5dktgsc6fqq5jpl3ll00fk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.97059408198-knngmrttfm5dktgsc6fqq5jpl3ll00fk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCc96O0ud-oeDjcm0WGk3f7kOjRzbqd1Ds</string>
+	<key>GCM_SENDER_ID</key>
+	<string>97059408198</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>std.coret.sequences</string>
+	<key>PROJECT_ID</key>
+	<string>sequences-riddle</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sequences-riddle.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:97059408198:ios:94388319b9f5eb6803fd47</string>
+	<key>DATABASE_URL</key>
+	<string>https://sequences-riddle.firebaseio.com</string>
+</dict>
+</plist>

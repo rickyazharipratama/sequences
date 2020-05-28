@@ -1,18 +1,17 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
 
 class KeyboardActionButton extends StatelessWidget {
 
-  final StreamSink actionSinker;
+  final VirtualKeyboardModel keys;
   final KeyboardAction action;
   final Color color;
   final String image;
 
   KeyboardActionButton({
-    @required this.actionSinker,
+    @required this.keys,
     @required this.action,
     @required this.color,
     @required this.image
@@ -22,7 +21,7 @@ class KeyboardActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        actionSinker.add(action);
+        keys.structurizeKeyAction(action);
       },
       child: Container(
         height: CommonUtils.instance.getKeyboardSizeHeight(context),

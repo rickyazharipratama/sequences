@@ -3,19 +3,6 @@ import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 
 class ContinueWrapperPresenterView implements BasePresenterView{
 
-
-  continueGame(){
-
-  }
-
-  resetGame(){
-
-  }
-
-  selectLevel(){
-
-  }
-
   @override
   BuildContext currentContext() {
     throw UnimplementedError();

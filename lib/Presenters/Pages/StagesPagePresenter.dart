@@ -1,39 +1,25 @@
 import 'dart:async';
+import 'dart:math';
 
-import 'package:sequences/Models/SequenceModel.dart';
+import 'package:sequences/Models/RX/QuestionRxModel.dart';
+import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Models/UserStageModel.dart';
 import 'package:sequences/PresenterViews/Pages/StagesPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
-import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
 
 class StagesPagePresenter extends BasePresenter{
 
   final StagesPagePresenterView view;
 
-  StreamController<String> _keyNumberStream = StreamController();
-  StreamController<KeyboardAction> _keyActionStream = StreamController();
-  StreamController<String> _sequenceStream = StreamController();
-  StreamController<String> _answerStream = StreamController();
+  QuestionRxModel seq;
+  VirtualKeyboardModel keys;
+
   StreamController<bool> _shakerStream = StreamController();
 
-
-
-  StreamSink get keyNumberSinker => _keyNumberStream.sink;
-  Stream<String> get keyNumberStream => _keyNumberStream.stream;
-
-  StreamSink get keyActionSinker => _keyActionStream.sink;
-  Stream<KeyboardAction> get keyActionStream => _keyActionStream.stream;
-
-  StreamSink<String> get sequenceSinker => _sequenceStream.sink;
-  Stream<String> get sequenceStream => _sequenceStream.stream;
-
-  StreamSink<String> get answerSinker => _answerStream.sink;
-  Stream<String> get answerStream => _answerStream.stream;
-
-  StreamSink<bool> get shakerSinker => _shakerStream.sink;
   Stream<bool> get shakerStream => _shakerStream.stream;
+  StreamSink<bool> get shakerSink => _shakerStream.sink;
 
   final bool isContinue;
   final int fromStage;
@@ -41,10 +27,15 @@ class StagesPagePresenter extends BasePresenter{
   int duration = 0;
   int unCorrectAnswer = 0;
 
-  StagesPagePresenter({this.view, this. isContinue, this.fromStage});
+  StagesPagePresenter({this.view, this. isContinue, this.fromStage}){
+    keys = VirtualKeyboardModel(
+      hintCallback: onMustDoHint,
+      submitCallback: onReceiveAnswerListener
+    );
+    seq = QuestionRxModel();
+  }
 
   UserStageModel stages;
-  SequenceModel sequence;
 
 
   @override
@@ -59,22 +50,16 @@ class StagesPagePresenter extends BasePresenter{
       }
     }else{
       stages.currentStage = 1;
-      stages.saveToStore();
+      await stages.saveToStore();
     }
+    await seq.generateQuestion(stages.currentStage);
     sendCurrentScreen(DefaultConstantCollection.instance.stagePage);
-    sequence = SequenceModel();
-    await getQuestion();
-    answerStream.listen(onReceiveAnswerListener);
     duration = DateTime.now().millisecondsSinceEpoch;
   }
 
   @override
   void destroyObject() {
     super.destroyObject();
-    _keyNumberStream.close();
-    _keyActionStream.close();
-    _sequenceStream.close();
-    _answerStream.close();
     _shakerStream.close();
   }
 
@@ -83,7 +68,7 @@ class StagesPagePresenter extends BasePresenter{
   onReceiveAnswerListener(String answer) async{
     int intAnswer = int.parse(answer);
     // compare the answer with real answer
-    if(intAnswer == sequence.answer){
+    if(intAnswer == seq.sequence.answer){
       //correct answer
       int diff = DateTime.now().millisecondsSinceEpoch - duration;
       String diffTimeFormat = CommonUtils.instance.milliSecondToTime(diff);
@@ -118,17 +103,43 @@ class StagesPagePresenter extends BasePresenter{
       await view.goToCorrectAnswer();
       unCorrectAnswer = 0;
       duration = DateTime.now().millisecondsSinceEpoch;
+      keys.resetBlockNumberKey();
       stages.resetHintCount();
-      await getQuestion();
+      await seq.generateQuestion(stages.currentStage);
     }else{
       //wrong answer
       unCorrectAnswer++;
-      shakerSinker.add(true);
+      shakerSink.add(true);
+      print("wrong answer");
     }
   }
 
-  getQuestion() async{
-    await sequence.sequencesWithStage(stages.currentStage);
-    sequenceSinker.add(sequence.question);
+  onMustDoHint() async{
+    await view.showHint(
+      phase: stages.hintCounter,
+      source: seq
+    );
+    print("hint counter : "+stages.hintCounter.toString());
+    if(stages.hintCounter == 2){
+      blockNumberKey();
+    }
+    stages.hintCounter--;
+  }
+
+
+  blockNumberKey(){
+    int index = 0;
+    List<String> idxAnswers = seq.sequence.answer.toString().split("");
+    List<String> blockedkeys = List();
+    Random rand = Random();
+    while(index < seq.sequence.removeKeyCount){
+      String cln =   rand.nextInt(9).toString();
+      if(!idxAnswers.contains(cln) && !keys.blockNumberKey.contains(cln)){
+        blockedkeys.add(cln);
+        index++;
+      }
+    }
+    keys.addAllBlockNumberKeys(blockedkeys);
+    print(keys.blockNumberKey.join(",").toString());
   }
 }

@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Views/Components/KeyboardActionButton.dart';
 import 'package:sequences/Views/Components/KeyboardNumberButton.dart';
@@ -8,27 +7,10 @@ import 'package:sequences/Views/Components/KeyboardTextField.dart';
 
 class SequencesKeyboard extends StatelessWidget {
 
-  // sink num key value to streamer when hitted by user
-  final StreamSink<String> numberSinker;
-
-  // sink action key value to streamer when hitted by user
-  final StreamSink<KeyboardAction> actionSinker;
-
-  // stream number key value when hitted by user
-  final Stream<String> numberSteam;
-
-  // stream action key value when hitted by user
-  final Stream<KeyboardAction> actionStream;
-
-  //sink text value to streamer
-  final StreamSink<String> answerSinker;
+  final VirtualKeyboardModel keys;
 
   SequencesKeyboard({
-    @required this.numberSinker, 
-    @required this.actionSinker, 
-    @required this.numberSteam, 
-    @required this.actionStream,
-    @required this.answerSinker
+    @required this.keys
   });
 
   @override
@@ -43,7 +25,7 @@ class SequencesKeyboard extends StatelessWidget {
               flex: 1,
               child: KeyboardActionButton(
                 action: KeyboardAction.hint,
-                actionSinker: actionSinker,
+                keys: keys,
                 color: Theme.of(context).hintColor,
                 image: "assets/images/light-on.png",
               ),
@@ -52,9 +34,7 @@ class SequencesKeyboard extends StatelessWidget {
             Expanded(
               flex: 2,
               child: KeyboardTextField(
-                textSinker: answerSinker,
-                numberStreamer: numberSteam, 
-                actionStreamer: actionStream
+                keys: keys,
               )
             ),
             //erase
@@ -62,7 +42,7 @@ class SequencesKeyboard extends StatelessWidget {
               flex: 1,
               child: KeyboardActionButton(
                 action: KeyboardAction.erase,
-                actionSinker: actionSinker,
+                keys: keys,
                 color: Theme.of(context).errorColor,
                 image: "assets/images/eraser.png",
               )
@@ -72,7 +52,7 @@ class SequencesKeyboard extends StatelessWidget {
               flex: 1,
               child: KeyboardActionButton(
                 action: KeyboardAction.submit,
-                actionSinker: actionSinker,
+                keys: keys,
                 color: Theme.of(context).primaryColor,
                 image: "assets/images/check.png",
               ),
@@ -85,31 +65,31 @@ class SequencesKeyboard extends StatelessWidget {
             Expanded(
               child:KeyboardNumberButton(
                 label: "1",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "2",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "3",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "4",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "5",
-                sinker: numberSinker,
+                keys: keys,
               )
             )
           ],
@@ -120,31 +100,31 @@ class SequencesKeyboard extends StatelessWidget {
             Expanded(
               child:KeyboardNumberButton(
                 label: "6",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "7",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "8",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "9",
-                sinker: numberSinker,
+                keys: keys,
               )
             ),
             Expanded(
               child:KeyboardNumberButton(
                 label: "0",
-                sinker: numberSinker,
+                keys: keys,
               )
             )
           ],

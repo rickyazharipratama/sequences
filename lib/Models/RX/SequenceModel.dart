@@ -2,15 +2,21 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:mobx/mobx.dart';
 
-class SequenceModel{
+part 'SequenceModel.g.dart';
 
-  String question;
+class SequenceModel = _SequenceModel with _$SequenceModel;
+
+abstract class _SequenceModel with Store{
+  @observable
+  String question="";
   int answer;
-  String firstHint;
-  String formula;
+  String firstHint="";
+  String formula="";
   int removeKeyCount;
 
+  @action
   sequencesWithStage(int stage) async{
 
     String asset = await rootBundle.loadString("assets/stages/basic.json");

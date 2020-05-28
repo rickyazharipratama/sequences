@@ -55,7 +55,7 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
                   bottom: 10,
                   left: 0,
                   right: 0,
-                  child: bottomSection(presenter.currentStages.currentStage),
+                  child: bottomSection(presenter.currentStages.currentStage, presenter.resetStage),
                 ),
 
                 Positioned(

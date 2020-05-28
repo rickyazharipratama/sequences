@@ -24,8 +24,6 @@ class SequenceQuestionFieldPresenterView implements BasePresenterView{
       }
       print("animation value : "+anim.value.toString()+"Animating : "+animatePadding.toString());
       updateState(() { });
-    })..addStatusListener((status){
-
     });
   }
 

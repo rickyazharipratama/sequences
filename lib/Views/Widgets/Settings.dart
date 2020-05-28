@@ -36,9 +36,9 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
       ),
       padding: EdgeInsets.fromLTRB(
         10,
-        MediaQuery.of(context).padding.top + 5,
+        5,
         10,
-        5),
+        MediaQuery.of(context).padding.bottom+5),
       child: stateStatus == PageStatus.ready ? 
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

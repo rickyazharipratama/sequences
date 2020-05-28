@@ -37,4 +37,11 @@ class _TapToStartState extends State<TapToStart> with TapToStartPresenterView, S
       ),
     );
   }
+
+  @override
+  void dispose() {
+    animController.dispose();
+    super.dispose();
+  }
+
 }

@@ -29,8 +29,15 @@ class LandingPagePresenter extends BasePresenter{
 
   Future<void> goToStage() async{
     await view.gotoStages();
-    currentStages.retrieveCurrentStage();
+    await currentStages.retrieveCurrentStage();
     view.updateState(() { });
   }
 
+  Future<void> resetStage() async{
+    await currentStages.retrieveCurrentStage();
+    if(currentStages.currentStage != 1){
+      currentStages.currentStage = 1;
+      await currentStages.saveToStore();
+    }
+  }
 }

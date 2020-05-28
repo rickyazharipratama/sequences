@@ -88,7 +88,7 @@ class ThemeUtil{
       //text or
       bodyText2: TextStyle(
         color: Color(0xff6A6A6A),
-        fontSize: 50,
+        fontSize: 14,
         fontWeight: FontWeight.w500,
       ),
       //numbers, and riddle

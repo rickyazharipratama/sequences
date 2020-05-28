@@ -1,26 +1,19 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/PresenterViews/Components/KeyboardTextFieldPresenterView.dart';
-import 'package:sequences/Presenters/Components/KeyboardTextFieldPresenter.dart';
-import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
 
 class KeyboardTextField extends StatefulWidget {
 
   // stream key number value when hitted by user
-  final Stream<String> numberStreamer;
+  final VirtualKeyboardModel keys;
 
-  // stream action key value whene hitted by user
-  final Stream<KeyboardAction> actionStreamer;
-
-  //sink text value to stremer
-  final StreamSink<String> textSinker;
 
   KeyboardTextField({
-    @required this.numberStreamer, 
-    @required this.actionStreamer,
-    @required this. textSinker});
+    @required this.keys  
+  });
 
   @override
   _KeyboardTextFieldState createState() => new _KeyboardTextFieldState();
@@ -28,18 +21,10 @@ class KeyboardTextField extends StatefulWidget {
 
 class _KeyboardTextFieldState extends State<KeyboardTextField> with KeyboardTextFieldPresenterView{
 
-  KeyboardTextFieldPresenter presenter;
 
   @override
   void initState() {
     super.initState();
-    presenter = KeyboardTextFieldPresenter(
-      actionStream: widget.actionStreamer,
-      numberStream: widget.numberStreamer,
-      answerSinker: widget.textSinker,
-      view: this
-    )
-    ..initiateData();
   }
 
   @override
@@ -56,13 +41,15 @@ class _KeyboardTextFieldState extends State<KeyboardTextField> with KeyboardText
         horizontal: 5
       ),
       child: Center(
-        child: RichText(
-          textAlign: TextAlign.left,
-          text: TextSpan(
-            text: presenter.value,
-            style: Theme.of(context).primaryTextTheme.headline4
+        child: Observer(
+          builder: (context) => RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+              text: widget.keys.keyPunched,
+              style: Theme.of(context).primaryTextTheme.headline4
+            ),
           ),
-        ),
+        )
       )
     );
   }

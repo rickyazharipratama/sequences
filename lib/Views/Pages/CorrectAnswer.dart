@@ -112,4 +112,11 @@ class _CorrectAnswerState extends State<CorrectAnswer> with CorrectAnswerPresent
     super.updateState(callback);
     setState(callback);
   }
+
+  @override
+  void dispose() {
+    animController.dispose();
+    super.dispose();
+  }
+
 }

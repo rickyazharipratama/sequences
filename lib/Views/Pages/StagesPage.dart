@@ -49,8 +49,8 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                       //main content
                       Positioned.fill(
                         child: SequenceQuestionField(
-                          shakerStreamer: presenter.shakerStream,
-                          streamer: presenter.sequenceStream,
+                          shaker: presenter.shakerStream,
+                          question: presenter.seq,
                         ),
                       ),
 
@@ -81,11 +81,7 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                     bottom: MediaQuery.of(context).padding.bottom,
                   ),
                   child: SequencesKeyboard(
-                    actionSinker: presenter.keyActionSinker,
-                    numberSinker: presenter.keyNumberSinker,
-                    actionStream: presenter.keyActionStream,
-                    numberSteam: presenter.keyNumberStream,
-                    answerSinker: presenter.answerSinker,
+                    keys: presenter.keys,
                   ),
                 ),
               ],

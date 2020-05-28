@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:navigatorium/navigatorium.dart';
+import 'package:sequences/Models/RX/QuestionRxModel.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 import 'package:sequences/Views/Pages/CorrectAnswer.dart';
+import 'package:sequences/Views/Widgets/HIntWrapper.dart';
 
 class StagesPagePresenterView implements BasePresenterView{
 
@@ -26,4 +29,18 @@ class StagesPagePresenterView implements BasePresenterView{
   Future<bool> willPop() async{
     return true;
   }
+
+  showHint({
+    QuestionRxModel source,
+    int phase
+  }) async{
+    await showModalBottomSheet(
+      context: currentContext(), 
+      builder: (context){
+        return HintWrapper(
+          hintSource: source,
+          hintWrap: phase,
+        );
+    });
+  }  
 }

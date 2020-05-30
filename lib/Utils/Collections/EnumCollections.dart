@@ -9,3 +9,8 @@ enum KeyboardAction{
   erase,
   submit
 }
+
+enum FlavorEnvironment{
+  debug,
+  release
+}

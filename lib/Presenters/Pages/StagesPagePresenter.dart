@@ -41,6 +41,7 @@ class StagesPagePresenter extends BasePresenter{
   @override
   void initiateData() async{
     super.initiateData();
+    await view.initializeAdmob(rewardCallback: onAdmobRewardCallback);
     stages = UserStageModel();
     if(isContinue){
       if(fromStage < 0){
@@ -115,15 +116,13 @@ class StagesPagePresenter extends BasePresenter{
   }
 
   onMustDoHint() async{
-    await view.showHint(
-      phase: stages.hintCounter,
-      source: seq
-    );
-    print("hint counter : "+stages.hintCounter.toString());
-    if(stages.hintCounter == 2){
-      blockNumberKey();
+    if(await view.admobReward.isLoaded){
+      view.admobReward.show();
+    }else{
+      CommonUtils.instance.showToast(view.currentContext(),
+        msg: "There is no  ads available to unlock hint."
+      );
     }
-    stages.hintCounter--;
   }
 
 
@@ -141,5 +140,22 @@ class StagesPagePresenter extends BasePresenter{
     }
     keys.addAllBlockNumberKeys(blockedkeys);
     print(keys.blockNumberKey.join(",").toString());
+  }
+
+
+  onAdmobRewardCallback(int val) async{
+    if(val > 0){
+      await view.showHint(
+        phase: stages.hintCounter,
+        source: seq
+      );
+      print("hint counter : "+stages.hintCounter.toString());
+      if(stages.hintCounter == 2){
+        blockNumberKey();
+      }
+      stages.hintCounter--;
+    }else{
+
+    }
   }
 }

@@ -6,4 +6,9 @@ class SharedPreferencesConstantCollection{
     final String isSoundActive = "isSoundActive";
     final String isMusicActive = "isMusicActive";
     final String themeConfiguration = "themeconfiguration";
+
+    //admob
+    final String tryLoadRewardAds = "loadRewardAds";
+    final String tryLoadBannerAds = "loadBannerAds";
+
   }

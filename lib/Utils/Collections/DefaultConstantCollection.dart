@@ -1,7 +1,10 @@
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
+
 class DefaultConstantCollection{
 
   static DefaultConstantCollection instance = DefaultConstantCollection();
 
+  FlavorEnvironment environment = FlavorEnvironment.debug;
   
   String version = "1.0.0";
 
@@ -30,4 +33,13 @@ class DefaultConstantCollection{
   String answerDuration = "Answer_Duration";
   String hintCount = "using_hint";
   String uncorrectAnswer = "uncorrect_answer";
+
+  //admob
+  String admobIdIOS = "ca-app-pub-5718875531666553~8715462450";
+  String admobBannerIdIOS = "ca-app-pub-5718875531666553/6671753046";
+  String admobRewardIOS = "ca-app-pub-5718875531666553/2729951687";
+
+  String admobIdAndroid ="ca-app-pub-5718875531666553~2256977267";
+  String admobBannerIdAndroid = "ca-app-pub-5718875531666553/6004650589";
+  String admobRewardIdAndroid = "ca-app-pub-5718875531666553/3186915553";
 }

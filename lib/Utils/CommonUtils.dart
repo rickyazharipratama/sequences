@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
+import 'package:toast/toast.dart';
 
 class CommonUtils{
 
@@ -41,5 +45,47 @@ class CommonUtils{
     }
 
     return strHour+":"+strMinute+":"+strSecond;
+  }
+
+  List<String> getAdmobId(){
+    if(Platform.isIOS){
+      List<String> strs = List();
+      strs.add(DefaultConstantCollection.instance.admobIdIOS);
+      strs.add("E93ADE10-FCC0-44D0-AE46-2B3F51291F06");
+      return strs;
+    }else if(Platform.isAndroid){
+      List<String> strs = List();
+      strs.add(DefaultConstantCollection.instance.admobIdAndroid);
+      return strs;
+    }
+    return null;
+  }
+
+  String getAdmobBannerId(){
+    if(Platform.isIOS){
+      return DefaultConstantCollection.instance.admobBannerIdIOS;
+    }else if(Platform.isAndroid){
+      return DefaultConstantCollection.instance.admobBannerIdAndroid;
+    }
+    return null;
+  }
+
+  String getAdmobRewardId(){
+    if(Platform.isIOS){
+      return DefaultConstantCollection.instance.admobRewardIOS;
+    }else if(Platform.isAndroid){
+      return DefaultConstantCollection.instance.admobRewardIdAndroid;
+    }
+    return null;
+  }
+
+  showToast(BuildContext context,{String msg}){
+    Toast.show(msg, context,
+      backgroundColor: Theme.of(context).dividerColor,
+      backgroundRadius: 7.5,
+      duration: Toast.LENGTH_LONG,
+      gravity: Toast.BOTTOM,
+      textColor: Theme.of(context).focusColor
+    );
   }
 }

@@ -41,7 +41,12 @@ class StagesPagePresenter extends BasePresenter{
   @override
   void initiateData() async{
     super.initiateData();
-    await view.initializeAdmob(rewardCallback: onAdmobRewardCallback);
+    await view.initializeAdmob(
+      rewardCallback: onAdmobRewardCallback,
+      onHintLoad: keys.onHintLoading,
+      onHintLoadFailed: keys.onHintLoadFailed,
+      onHintReady: keys.onHintReady
+    );
     stages = UserStageModel();
     if(isContinue){
       if(fromStage < 0){
@@ -116,12 +121,16 @@ class StagesPagePresenter extends BasePresenter{
   }
 
   onMustDoHint() async{
-    if(await view.admobReward.isLoaded){
-      view.admobReward.show();
+    if(stages.hintCounter >0){
+      if(await view.admobReward.isLoaded){
+        view.admobReward.show();
+      }else{
+        CommonUtils.instance.showToast(view.currentContext(),
+          msg: "There is no  ads available to unlock hint."
+        );
+      }
     }else{
-      CommonUtils.instance.showToast(view.currentContext(),
-        msg: "There is no  ads available to unlock hint."
-      );
+      onAdmobRewardCallback(1);
     }
   }
 
@@ -133,7 +142,7 @@ class StagesPagePresenter extends BasePresenter{
     Random rand = Random();
     while(index < seq.sequence.removeKeyCount){
       String cln =   rand.nextInt(9).toString();
-      if(!idxAnswers.contains(cln) && !keys.blockNumberKey.contains(cln)){
+      if(!idxAnswers.contains(cln) && !blockedkeys.contains(cln)){
         blockedkeys.add(cln);
         index++;
       }
@@ -158,4 +167,7 @@ class StagesPagePresenter extends BasePresenter{
 
     }
   }
+
+  
+
 }

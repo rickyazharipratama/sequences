@@ -24,6 +24,21 @@ mixin _$VirtualKeyboardModel on _VirtualKeyboadModel, Store {
     });
   }
 
+  final _$hintStateAtom = Atom(name: '_VirtualKeyboadModel.hintState');
+
+  @override
+  HintState get hintState {
+    _$hintStateAtom.reportRead();
+    return super.hintState;
+  }
+
+  @override
+  set hintState(HintState value) {
+    _$hintStateAtom.reportWrite(value, super.hintState, () {
+      super.hintState = value;
+    });
+  }
+
   final _$blockNumberKeyAtom =
       Atom(name: '_VirtualKeyboadModel.blockNumberKey');
 
@@ -110,9 +125,43 @@ mixin _$VirtualKeyboardModel on _VirtualKeyboadModel, Store {
   }
 
   @override
+  void onHintLoading() {
+    final _$actionInfo = _$_VirtualKeyboadModelActionController.startAction(
+        name: '_VirtualKeyboadModel.onHintLoading');
+    try {
+      return super.onHintLoading();
+    } finally {
+      _$_VirtualKeyboadModelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onHintLoadFailed() {
+    final _$actionInfo = _$_VirtualKeyboadModelActionController.startAction(
+        name: '_VirtualKeyboadModel.onHintLoadFailed');
+    try {
+      return super.onHintLoadFailed();
+    } finally {
+      _$_VirtualKeyboadModelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onHintReady() {
+    final _$actionInfo = _$_VirtualKeyboadModelActionController.startAction(
+        name: '_VirtualKeyboadModel.onHintReady');
+    try {
+      return super.onHintReady();
+    } finally {
+      _$_VirtualKeyboadModelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 keyPunched: ${keyPunched},
+hintState: ${hintState},
 blockNumberKey: ${blockNumberKey}
     ''';
   }

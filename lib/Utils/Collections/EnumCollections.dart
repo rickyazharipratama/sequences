@@ -14,3 +14,9 @@ enum FlavorEnvironment{
   debug,
   release
 }
+
+enum HintState{
+  loading,
+  ready,
+  failed
+}

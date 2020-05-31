@@ -22,6 +22,9 @@ abstract class _VirtualKeyboadModel with Store{
   KeyboardAction keyAction;
 
   @observable
+  HintState hintState = HintState.loading;
+
+  @observable
   ObservableList<String> blockNumberKey = ObservableList();
 
 
@@ -65,5 +68,20 @@ abstract class _VirtualKeyboadModel with Store{
   @action
   void resetKeyPunched(){
     keyPunched="";
+  }
+
+  @action
+  void onHintLoading(){
+    hintState = HintState.loading;
+  }
+
+  @action
+  void onHintLoadFailed(){
+    hintState = HintState.failed;
+  }
+
+  @action
+  void onHintReady(){
+    hintState = HintState.ready;
   }
 }

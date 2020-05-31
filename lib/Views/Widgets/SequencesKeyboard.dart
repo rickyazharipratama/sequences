@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Views/Components/HintActionButton.dart';
 import 'package:sequences/Views/Components/KeyboardActionButton.dart';
 import 'package:sequences/Views/Components/KeyboardNumberButton.dart';
 import 'package:sequences/Views/Components/KeyboardTextField.dart';
@@ -23,12 +24,9 @@ class SequencesKeyboard extends StatelessWidget {
             // hint
             Expanded(
               flex: 1,
-              child: KeyboardActionButton(
-                action: KeyboardAction.hint,
+              child: HintActionButton(
                 keys: keys,
-                color: Theme.of(context).hintColor,
-                image: "assets/images/light-on.png",
-              ),
+              )
             ),
             // textfield
             Expanded(

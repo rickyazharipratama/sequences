@@ -38,6 +38,7 @@ flutter:
     - assets/images/check-circle.png
     - assets/images/lock.png
     - assets/images/coret-logo.png
+    - assets/images/no-light.png
 
     - assets/stages/basic.json
   #  - images/a_dot_burr.jpeg

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +18,12 @@ class StagesPagePresenterView implements BasePresenterView{
 
   AdmobReward admobReward;
 
-  initializeAdmob({ValueChanged<int> rewardCallback}) async{
+  initializeAdmob({
+    ValueChanged<int> rewardCallback,
+    VoidCallback onHintLoad,
+    VoidCallback onHintReady,
+    VoidCallback onHintLoadFailed
+  }) async{
 
     (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, 0);
 
@@ -24,6 +31,7 @@ class StagesPagePresenterView implements BasePresenterView{
       adUnitId: DefaultConstantCollection.instance.environment == FlavorEnvironment.debug ? null : CommonUtils.instance.getAdmobRewardId(),
       listener: (AdmobAdEvent event, Map<String,dynamic> arg) async{
         print("Reward admob event : "+event.toString());
+        print("Reward admob args : "+arg.toString());
         if(event == AdmobAdEvent.rewarded){
           int val = -1;
           if(arg['amount'] != null){
@@ -34,16 +42,35 @@ class StagesPagePresenterView implements BasePresenterView{
           print("reward admob type : "+arg['type'].toString()+", value : "+val.toString());
           rewardCallback(val);
         }else if(event == AdmobAdEvent.closed){
-          admobReward.load();
+          admobReward = null;
+          onHintLoad();
+          initializeAdmob(
+            rewardCallback: rewardCallback,
+            onHintLoad: onHintLoad,
+            onHintLoadFailed: onHintLoadFailed,
+            onHintReady: onHintReady
+          );
         }else if(event == AdmobAdEvent.failedToLoad){
-          int retry = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, error: -1);
-          if(retry >= 0){
-            if(retry <= 3){
-              retry++;
-              (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, retry);
-              admobReward.load();
+          Timer(
+            Duration(
+              milliseconds: 2500
+            ),
+            () async{
+              int retry = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, error: -1);
+              if(retry >= 0){
+                if(retry <= 3){
+                  retry++;
+                  (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, retry);
+                  admobReward.load();
+                }else{
+                  retry = -10;
+                  onHintLoadFailed();
+                }
+              }
             }
-          }
+          );
+        }else if(event == AdmobAdEvent.loaded){
+          onHintReady();
         }
       }
     );

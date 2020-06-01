@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Pages/LevelPagePresenterView.dart';
 import 'package:sequences/Presenters/Pages/LevelPagePresenter.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/Level.dart';
 import 'package:sequences/Views/Pages/BasePage.dart';
@@ -41,18 +43,18 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      top: 5,
+                      top: MediaQuery.of(context).padding.top + 5,
                       right: 10,
                     ),
                     child: ImageButton(
                       callback: () async{
                         print("show setting dialog");
-                        String res = await showModalBottomSheet(
+                        SettingList res = await showModalBottomSheet(
                           context: context, 
-                          builder: (context) => Settings());
-                        if(res == DefaultConstantCollection.instance.mainMenuFlag){
-                          Navigator.of(context).pop();
-                        }
+                          builder: (context) => Settings(
+                            isNeedMainMenu: true,
+                          ));
+                        CommonUtils.instance.settingPopChoice(context, choice: res);
                       },
                       image: "assets/images/gear.png",
                     ),

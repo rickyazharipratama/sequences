@@ -18,7 +18,6 @@ class UserStageModel{
   goToNextStage(){
     if(currentStage < DefaultConstantCollection.instance.totalStage){
       currentStage++;
-      hintCounter--;
     }
   }
 

@@ -6,12 +6,11 @@ import 'package:flutter/widgets.dart';
 import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/Models/RX/QuestionRxModel.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
-import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
-import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/Collections/SharedPreferencesConstantCollection.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Utils/Helpers/SharedPreferenceHelper.dart';
 import 'package:sequences/Views/Pages/CorrectAnswer.dart';
+import 'package:sequences/Views/Pages/CreditsPage.dart';
 import 'package:sequences/Views/Widgets/HIntWrapper.dart';
 
 class StagesPagePresenterView implements BasePresenterView{
@@ -28,7 +27,7 @@ class StagesPagePresenterView implements BasePresenterView{
     (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, 0);
 
     admobReward = AdmobReward(
-      adUnitId: DefaultConstantCollection.instance.environment == FlavorEnvironment.debug ? null : CommonUtils.instance.getAdmobRewardId(),
+      adUnitId: CommonUtils.instance.getAdmobRewardId(),
       listener: (AdmobAdEvent event, Map<String,dynamic> arg) async{
         print("Reward admob event : "+event.toString());
         print("Reward admob args : "+arg.toString());
@@ -113,8 +112,7 @@ class StagesPagePresenterView implements BasePresenterView{
     });
   } 
 
-  showadMobReward(ValueChanged<int> callback){
-    
+  goToCreditPage(){
+    Navigatorium.instance.changeWidgetNoAnimate(currentContext(), child: CreditsPage());
   }
-
 }

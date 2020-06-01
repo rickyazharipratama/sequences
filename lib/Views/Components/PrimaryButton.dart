@@ -18,7 +18,7 @@ class PrimaryButton extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 5,
-          vertical: 15
+          vertical: 18
         ),
         child: Center(
           child: Text(

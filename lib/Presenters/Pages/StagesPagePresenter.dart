@@ -111,7 +111,11 @@ class StagesPagePresenter extends BasePresenter{
       duration = DateTime.now().millisecondsSinceEpoch;
       keys.resetBlockNumberKey();
       stages.resetHintCount();
-      await seq.generateQuestion(stages.currentStage);
+      if(stages.currentStage < DefaultConstantCollection.instance.totalStage){
+        await seq.generateQuestion(stages.currentStage);
+      }else{
+        view.goToCreditPage();
+      }
     }else{
       //wrong answer
       unCorrectAnswer++;
@@ -167,7 +171,4 @@ class StagesPagePresenter extends BasePresenter{
 
     }
   }
-
-  
-
 }

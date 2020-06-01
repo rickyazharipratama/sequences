@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Views/Pages/CreditsPage.dart';
 import 'package:toast/toast.dart';
 
 class CommonUtils{
@@ -10,7 +14,7 @@ class CommonUtils{
 
 
   double getKeyboardSizeHeight(BuildContext context){
-    return MediaQuery.of(context).size.width / 5;
+    return (MediaQuery.of(context).size.width / 5) * .75;
   }
 
   double getIconKeyboardSize(double size){
@@ -63,6 +67,9 @@ class CommonUtils{
 
   String getAdmobBannerId(){
     if(Platform.isIOS){
+      if(DefaultConstantCollection.instance.environment == FlavorEnvironment.debug){
+        return null;
+      }
       return DefaultConstantCollection.instance.admobBannerIdIOS;
     }else if(Platform.isAndroid){
       return DefaultConstantCollection.instance.admobBannerIdAndroid;
@@ -72,6 +79,9 @@ class CommonUtils{
 
   String getAdmobRewardId(){
     if(Platform.isIOS){
+      if(DefaultConstantCollection.instance.environment == FlavorEnvironment.debug){
+        return null;
+      }
       return DefaultConstantCollection.instance.admobRewardIOS;
     }else if(Platform.isAndroid){
       return DefaultConstantCollection.instance.admobRewardIdAndroid;
@@ -87,5 +97,22 @@ class CommonUtils{
       gravity: Toast.BOTTOM,
       textColor: Theme.of(context).focusColor
     );
+  }
+
+  preferablePortraitMode(){
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp
+    ]);
+  }
+
+
+  settingPopChoice(BuildContext context, {SettingList choice}){
+    if(choice == SettingList.mainMenu){
+      Navigator.of(context).pop();
+    }else if(choice == SettingList.credit){
+      Navigatorium.instance.pushWithNoAnimate(context, child: CreditsPage());
+    }else if(choice == SettingList.privacyPolicy){
+      //should direct in to browser
+    }
   }
 }

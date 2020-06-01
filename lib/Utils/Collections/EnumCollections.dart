@@ -20,3 +20,9 @@ enum HintState{
   ready,
   failed
 }
+
+enum SettingList{
+  mainMenu,
+  credit,
+  privacyPolicy
+}

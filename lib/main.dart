@@ -10,6 +10,7 @@ void main(){
     print("run debug mode");
     Admob.initialize(
       testDeviceIds: <String>[
+        "78ADF84F7204580FFC8B911A1DC88A17",
         "E93ADE10-FCC0-44D0-AE46-2B3F51291F06"
       ]
     );

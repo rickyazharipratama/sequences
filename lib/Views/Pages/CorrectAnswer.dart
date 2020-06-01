@@ -28,7 +28,7 @@ class _CorrectAnswerState extends State<CorrectAnswer> with CorrectAnswerPresent
             right: 0,
             child: Container(
               color: Theme.of(context).primaryColor,
-              height: (MediaQuery.of(context).size.height / 2) * anim.value,
+              height: ((MediaQuery.of(context).size.height / 2) * anim.value) + 1,
               width: MediaQuery.of(context).size.width,
             ),
           ),
@@ -39,7 +39,7 @@ class _CorrectAnswerState extends State<CorrectAnswer> with CorrectAnswerPresent
             right: 0,
             child: Container(
               color: Theme.of(context).primaryColor,
-              height: ( MediaQuery.of(context).size.height / 2 ) * anim.value,
+              height: ((MediaQuery.of(context).size.height / 2 ) * anim.value) + 1,
               width: MediaQuery.of(context).size.width,
             ),
           ),

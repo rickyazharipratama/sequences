@@ -82,19 +82,25 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
             ),
 
             ListButton(
-              callback: null,
+              callback: (){
+                Navigator.of(context).pop(SettingList.privacyPolicy);
+              },
               label: "Privacy Policy",
             ),
 
-            ListButton(
-              callback: null,
-              label: "Credits",
-            ),
+            !widget.isNeedMainMenu ?
+              ListButton(
+                callback: (){
+                  Navigator.of(context).pop(SettingList.credit);
+                },
+                label: "Credits",
+              )
+             : Container(),
 
             widget.isNeedMainMenu?
               ListButton(
                 callback: (){
-                  Navigator.of(context).pop(DefaultConstantCollection.instance.mainMenuFlag);
+                  Navigator.of(context).pop(SettingList.mainMenu);
                 },
                 label: "Back to Main Menu",
               )

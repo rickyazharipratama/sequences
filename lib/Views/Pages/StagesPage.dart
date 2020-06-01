@@ -68,8 +68,9 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
 
                             Expanded(
                               child: AdmobBanner(
+                                key: GlobalKey(),
                                 adSize: AdmobBannerSize.BANNER,
-                                adUnitId: DefaultConstantCollection.instance.environment == FlavorEnvironment.debug ? null : CommonUtils.instance.getAdmobBannerId(),
+                                adUnitId: CommonUtils.instance.getAdmobBannerId(),
                                 listener: (event,__){
                                   print("banner admob event : "+event.toString());
                                 },
@@ -86,14 +87,14 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                             ImageButton(
                               callback: () async{
                                 print("show setting dialog");
-                                String res = await showModalBottomSheet(
+                                SettingList res = await showModalBottomSheet(
                                   context: context, 
                                   builder: (context) => Settings(
                                     isNeedMainMenu: true,
                                   ));
-                                if(res == DefaultConstantCollection.instance.mainMenuFlag){
-                                  Navigator.of(context).pop();
-                                }
+                                CommonUtils.instance.settingPopChoice(context,
+                                  choice: res
+                                );
                               },
                               image: "assets/images/gear.png",
                             ),

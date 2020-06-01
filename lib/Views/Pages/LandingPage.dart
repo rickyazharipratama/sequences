@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Pages/LandingPagePresenterView.dart';
 import 'package:sequences/Presenters/Pages/LandingPagePresenter.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/Logo.dart';
 import 'package:sequences/Views/Pages/BasePage.dart';
@@ -52,7 +54,7 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
                 ),
                 
                 Positioned(
-                  bottom: 10,
+                  bottom: MediaQuery.of(context).padding.bottom +  10,
                   left: 0,
                   right: 0,
                   child: bottomSection(presenter.currentStages.currentStage, presenter.resetStage),
@@ -62,11 +64,13 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
                   top: MediaQuery.of(context).padding.top + 5,
                   right: 10,
                   child: ImageButton(
-                    callback: (){
+                    callback: () async{
                       print("show setting dialog");
-                      showModalBottomSheet(
+                      SettingList res = await  showModalBottomSheet(
                         context: context, 
                         builder: (context) => Settings());
+                      
+                      CommonUtils.instance.settingPopChoice(context, choice: res);
                     },
                     image: "assets/images/gear.png",
                   ),
@@ -93,7 +97,7 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
 
   @override
   void dispose(){
-    super.dispose();
     presenter.destroyObject();
+    super.dispose();
   }
 }

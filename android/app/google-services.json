@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "97059408198",
+    "firebase_url": "https://sequences-riddle.firebaseio.com",
+    "project_id": "sequences-riddle",
+    "storage_bucket": "sequences-riddle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97059408198:android:323d54257b45b74d03fd47",
+        "android_client_info": {
+          "package_name": "std.coret.sequences"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97059408198-tdofp0q9qopcjr6bvbgckns6689525tb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5LNGYi8uZnt-OK-kg9zX2RUU3xmQXZiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97059408198-tdofp0q9qopcjr6bvbgckns6689525tb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "97059408198-knngmrttfm5dktgsc6fqq5jpl3ll00fk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "std.coret.sequences"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

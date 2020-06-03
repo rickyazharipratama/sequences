@@ -1,21 +1,24 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:navigatorium/navigatorium.dart';
+import 'package:sequences/PresenterViews/Pages/SplashPagePresenterView.dart';
+import 'package:sequences/Presenters/Pages/SplashPagePresenter.dart';
 import 'package:sequences/Views/Pages/BasePage.dart';
-import 'package:sequences/Views/Pages/LandingPage.dart';
 
 class SplashPage extends StatefulWidget {
   @override
   _SplashPageState createState() => new _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashPageState extends State<SplashPage> with SplashPagePresenterView{
+
+  SplashPagePresenter presenter;
 
   @override
   void initState() {
     super.initState();
-    loadingSplash();
+
+    presenter = SplashPagePresenter(view: this)
+    ..initiateData();
+
   }
 
   @override
@@ -32,10 +35,18 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-
-  loadingSplash(){
-    Timer(Duration(milliseconds: 700), (){
-        Navigatorium.instance.newRoute(context, child: LandingPage());
-    });
+  @override
+  BuildContext currentContext() => context;
+  
+  @override
+  void updateState(callback) {
+    setState(callback);
   }
+
+
+  // loadingSplash(){
+  //   Timer(Duration(milliseconds: 700), (){
+  //       Navigatorium.instance.newRoute(context, child: LandingPage());
+  //   });
+  // }
 }

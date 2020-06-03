@@ -133,6 +133,7 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
 
   @override
   void dispose() {
+    presenter.destroyObject();
     super.dispose();
   }
 }

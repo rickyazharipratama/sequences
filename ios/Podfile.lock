@@ -4,6 +4,8 @@ PODS:
     - Firebase/Analytics (~> 6.5)
     - Flutter
     - Google-Mobile-Ads-SDK (~> 7.59)
+  - audioplayers (0.0.1):
+    - Flutter
   - Firebase/AdMob (6.14.0):
     - Firebase/CoreOnly
     - Google-Mobile-Ads-SDK (~> 7.50)
@@ -82,6 +84,10 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - path_provider (0.0.1):
+    - Flutter
+  - path_provider_macos (0.0.1):
+    - Flutter
   - PromisesObjC (1.2.8)
   - shared_preferences (0.0.1):
     - Flutter
@@ -92,10 +98,13 @@ PODS:
 
 DEPENDENCIES:
   - admob_flutter (from `.symlinks/plugins/admob_flutter/ios`)
+  - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - Firebase/Core
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - Flutter (from `Flutter`)
   - in_app_update (from `.symlinks/plugins/in_app_update/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
@@ -119,12 +128,18 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   admob_flutter:
     :path: ".symlinks/plugins/admob_flutter/ios"
+  audioplayers:
+    :path: ".symlinks/plugins/audioplayers/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   Flutter:
     :path: Flutter
   in_app_update:
     :path: ".symlinks/plugins/in_app_update/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  path_provider_macos:
+    :path: ".symlinks/plugins/path_provider_macos/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   shared_preferences_macos:
@@ -134,6 +149,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   admob_flutter: 753df2f47d573a329a5702e5c482078253bc0327
+  audioplayers: 84f968cea3f2deab00ec4f8ff53358b3c0b3992c
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
   firebase_analytics: dacdcfc524d722fff13dcff942f0dfa47e6be567
   FirebaseAnalytics: f68b9f3f1241385129ae0a83b63627fc420c05e5
@@ -149,6 +165,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   in_app_update: 16e877e205f4360264cb536e3a6481f0d90299e1
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087

@@ -19,6 +19,8 @@ class StagesPagePresenterView implements BasePresenterView{
 
   initializeAdmob({
     ValueChanged<int> rewardCallback,
+    VoidCallback onAdsOpened,
+    VoidCallback onAdsClosed,
     VoidCallback onHintLoad,
     VoidCallback onHintReady,
     VoidCallback onHintLoadFailed
@@ -49,6 +51,7 @@ class StagesPagePresenterView implements BasePresenterView{
             onHintLoadFailed: onHintLoadFailed,
             onHintReady: onHintReady
           );
+          onAdsClosed();
         }else if(event == AdmobAdEvent.failedToLoad){
           Timer(
             Duration(
@@ -70,6 +73,8 @@ class StagesPagePresenterView implements BasePresenterView{
           );
         }else if(event == AdmobAdEvent.loaded){
           onHintReady();
+        }else if(event == AdmobAdEvent.opened){
+          onAdsOpened();
         }
       }
     );

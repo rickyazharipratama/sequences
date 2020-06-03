@@ -14,7 +14,7 @@ class SequencesApp extends StatefulWidget {
   _SequencesAppState createState() => new _SequencesAppState();
 }
 
-class _SequencesAppState extends State<SequencesApp> with SequenceAppPresenterView{
+class _SequencesAppState extends State<SequencesApp> with WidgetsBindingObserver,SequenceAppPresenterView{
 
 
   SequenceAppPresenter presenter;
@@ -22,7 +22,21 @@ class _SequencesAppState extends State<SequencesApp> with SequenceAppPresenterVi
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     presenter = SequenceAppPresenter(view: this)..initiateData();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print("app state : "+state.toString());
+    if(state == AppLifecycleState.resumed){
+      presenter.resumeMusicSound();
+    }else if(state == AppLifecycleState.paused || state == AppLifecycleState.inactive){
+      presenter.pauseMusicSound();
+    }else if(state == AppLifecycleState.detached){
+      presenter.stopMusicSound();
+    }
   }
 
   @override
@@ -37,5 +51,11 @@ class _SequencesAppState extends State<SequencesApp> with SequenceAppPresenterVi
   void updateState(VoidCallback callback) {
     super.updateState(callback);
     setState(callback);
+  }
+
+  @override
+  void dispose() {
+    presenter.clearSound();
+    super.dispose();
   }
 }

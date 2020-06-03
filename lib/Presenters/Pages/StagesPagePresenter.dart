@@ -8,6 +8,7 @@ import 'package:sequences/PresenterViews/Pages/StagesPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class StagesPagePresenter extends BasePresenter{
 
@@ -45,7 +46,9 @@ class StagesPagePresenter extends BasePresenter{
       rewardCallback: onAdmobRewardCallback,
       onHintLoad: keys.onHintLoading,
       onHintLoadFailed: keys.onHintLoadFailed,
-      onHintReady: keys.onHintReady
+      onHintReady: keys.onHintReady,
+      onAdsOpened: SequencesApp.of(view.currentContext()).presenter.pauseMusicSound,
+      onAdsClosed: SequencesApp.of(view.currentContext()).presenter.resumeMusicSound
     );
     stages = UserStageModel();
     if(isContinue){
@@ -59,6 +62,8 @@ class StagesPagePresenter extends BasePresenter{
       await stages.saveToStore();
     }
     await seq.generateQuestion(stages.currentStage);
+    SequencesApp.of(view.currentContext()).presenter.isInMusicArea = true;
+    SequencesApp.of(view.currentContext()).presenter.playMusicSound();
     sendCurrentScreen(DefaultConstantCollection.instance.stagePage);
     duration = DateTime.now().millisecondsSinceEpoch;
   }

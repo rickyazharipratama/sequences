@@ -26,16 +26,19 @@ class LandingPagePresenterView implements BasePresenterView{
     status = PageStatus.ready;
   }
 
-  Widget bottomSection(int currentStages, VoidCallback reset){
+  Widget bottomSection(
+    int currentStages,{
+      VoidCallback reset,
+      VoidCallback levelSelect,
+      VoidCallback continueGame
+    }){
     if(status == PageStatus.ready){
       if(currentStages > 1){
         // button section;
         return ContinueWrapper(
-          onContinue: gotoStages,
-          onLevelSelect: goToLevelSelect,
-          onNewGame: (){
-            goToNewGame(reset);
-          },
+          onContinue: continueGame,
+          onLevelSelect: levelSelect,
+          onNewGame: reset
         );
       }
       // tap to startSection;
@@ -49,22 +52,25 @@ class LandingPagePresenterView implements BasePresenterView{
     return Container();
   }
 
-  goToNewGame(VoidCallback reset) async{
+  Future<void>goToNewGame() async{
     await Navigatorium.instance.pushWithNoAnimate(
       currentContext(),
       child: StagesPage.resetGame()
     );
-    reset();
     updateState(() { });
   }
 
-  goToLevelSelect() async{
+  goToLevelSelect({
+    VoidCallback selectedListener,
+    VoidCallback returnStage
+  }) async{
     int level = await Navigatorium.instance.pushWithNoAnimate(
       currentContext(),
       child: LevelPage()
     );
     print("level : "+level.toString());
     if(level > 0){
+      selectedListener();
       await Navigatorium.instance.pushWithNoAnimate(
         currentContext(),
         child: StagesPage.toContinue(
@@ -72,6 +78,7 @@ class LandingPagePresenterView implements BasePresenterView{
           spesificStage: level,
         )
       );
+      returnStage();
     }
   }
 

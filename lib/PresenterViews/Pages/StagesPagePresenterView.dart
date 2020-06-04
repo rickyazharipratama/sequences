@@ -99,10 +99,6 @@ class StagesPagePresenterView implements BasePresenterView{
     return true;
   }
 
-  Future<bool> willPop() async{
-    return true;
-  }
-
   showHint({
     QuestionRxModel source,
     int phase
@@ -117,7 +113,10 @@ class StagesPagePresenterView implements BasePresenterView{
     });
   } 
 
-  goToCreditPage(){
-    Navigatorium.instance.changeWidgetNoAnimate(currentContext(), child: CreditsPage());
+  Future<bool> goToCreditPage({VoidCallback ext}) async{
+    await Navigatorium.instance.pushWithNoAnimate(currentContext(), child: CreditsPage());
+    ext();
+    Navigator.of(currentContext()).pop();
+    return true;
   }
 }

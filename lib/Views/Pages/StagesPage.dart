@@ -42,7 +42,7 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-          onWillPop: willPop,
+          onWillPop: presenter.closingPage,
           child: BasePage(
             child: Column(
               children: <Widget>[
@@ -93,7 +93,8 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                                     isNeedMainMenu: true,
                                   ));
                                 CommonUtils.instance.settingPopChoice(context,
-                                  choice: res
+                                  choice: res,
+                                  mainMenuCallback: presenter.closingPage
                                 );
                               },
                               image: "assets/images/gear.png",

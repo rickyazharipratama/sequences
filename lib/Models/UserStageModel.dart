@@ -16,7 +16,7 @@ class UserStageModel{
   }
 
   goToNextStage(){
-    if(currentStage < DefaultConstantCollection.instance.totalStage){
+    if(currentStage <= DefaultConstantCollection.instance.totalStage){
       currentStage++;
     }
   }

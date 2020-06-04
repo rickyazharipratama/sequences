@@ -57,7 +57,11 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
                   bottom: MediaQuery.of(context).padding.bottom +  10,
                   left: 0,
                   right: 0,
-                  child: bottomSection(presenter.currentStages.currentStage, presenter.resetStage),
+                  child: bottomSection(presenter.currentStages.currentStage,
+                    continueGame: presenter.goToStage,
+                    levelSelect: presenter.levelSelect,
+                    reset: presenter.resetStage
+                  ),
                 ),
 
                 Positioned(

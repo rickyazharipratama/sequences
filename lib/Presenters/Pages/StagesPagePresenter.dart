@@ -7,6 +7,7 @@ import 'package:sequences/Models/UserStageModel.dart';
 import 'package:sequences/PresenterViews/Pages/StagesPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/SequencesApp.dart';
 
@@ -62,7 +63,7 @@ class StagesPagePresenter extends BasePresenter{
       await stages.saveToStore();
     }
     await seq.generateQuestion(stages.currentStage);
-    SequencesApp.of(view.currentContext()).presenter.isInMusicArea = true;
+    SequencesApp.of(view.currentContext()).presenter.musicArea = MusicState.stage;
     SequencesApp.of(view.currentContext()).presenter.playMusicSound();
     sendCurrentScreen(DefaultConstantCollection.instance.stagePage);
     duration = DateTime.now().millisecondsSinceEpoch;
@@ -74,6 +75,11 @@ class StagesPagePresenter extends BasePresenter{
     _shakerStream.close();
   }
 
+
+  Future<bool> closingPage() async{
+    SequencesApp.of(view.currentContext()).presenter.stopMusicSound();
+    return true;
+  }
 
   //listening answer stream
   onReceiveAnswerListener(String answer) async{
@@ -116,10 +122,12 @@ class StagesPagePresenter extends BasePresenter{
       duration = DateTime.now().millisecondsSinceEpoch;
       keys.resetBlockNumberKey();
       stages.resetHintCount();
-      if(stages.currentStage < DefaultConstantCollection.instance.totalStage){
+      if(stages.currentStage <= DefaultConstantCollection.instance.totalStage){
         await seq.generateQuestion(stages.currentStage);
       }else{
-        view.goToCreditPage();
+        await view.goToCreditPage(
+          ext: closingPage
+        );
       }
     }else{
       //wrong answer

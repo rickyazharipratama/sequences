@@ -106,8 +106,12 @@ class CommonUtils{
   }
 
 
-  settingPopChoice(BuildContext context, {SettingList choice}){
+  settingPopChoice(BuildContext context, {
+    SettingList choice,
+    VoidCallback mainMenuCallback
+  }){
     if(choice == SettingList.mainMenu){
+      mainMenuCallback();
       Navigator.of(context).pop();
     }else if(choice == SettingList.credit){
       Navigatorium.instance.pushWithNoAnimate(context, child: CreditsPage());

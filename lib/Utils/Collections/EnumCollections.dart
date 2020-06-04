@@ -26,3 +26,9 @@ enum SettingList{
   credit,
   privacyPolicy
 }
+
+enum MusicState{
+  none,
+  landingPage,
+  stage
+}

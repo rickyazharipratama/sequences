@@ -85,7 +85,7 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                            isOpen: presenter.stages.currentStage >= part,
                            callback: (){
                               if(presenter.stages.currentStage >= part){
-                                Navigator.of(context).pop(part);
+                                Navigator.of(context).pop(part + 1);
                               }
                            },
                          );

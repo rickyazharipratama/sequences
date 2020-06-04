@@ -7,6 +7,7 @@ import 'package:sequences/Views/Components/CheckBoxAction.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/ListButton.dart';
 import 'package:sequences/Views/Components/SwitcherAction.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class Settings extends StatefulWidget {
 
@@ -100,6 +101,9 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
             widget.isNeedMainMenu?
               ListButton(
                 callback: (){
+                  if(SequencesApp.of(context).presenter.musicArea != MusicState.none){
+                    SequencesApp.of(context).presenter.stopMusicSound();
+                  }
                   Navigator.of(context).pop(SettingList.mainMenu);
                 },
                 label: "Back to Main Menu",

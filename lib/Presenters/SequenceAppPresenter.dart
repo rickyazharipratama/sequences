@@ -4,9 +4,9 @@ import 'package:sequences/Models/ConfigurationModel.dart';
 import 'package:sequences/Models/SoundSettingModel.dart';
 import 'package:sequences/PresenterViews/SequenceAppPresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/Collections/SharedPreferencesConstantCollection.dart';
 import 'package:sequences/Utils/Helpers/SharedPreferenceHelper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SequenceAppPresenter extends BasePresenter{
 
@@ -18,7 +18,7 @@ class SequenceAppPresenter extends BasePresenter{
   AudioCache musicSounds;
   AudioPlayer _musicPlayer;
 
-  bool isInMusicArea = false;
+  MusicState musicArea = MusicState.none;
 
   SequenceAppPresenter({this.view}){
 
@@ -39,7 +39,10 @@ class SequenceAppPresenter extends BasePresenter{
     await sounds.retieveSoundSetting();
     await sounds.retrieveMusicSetting();
     await config.retrieveThemeConfiguration();
-    await musicSounds.load("sequence-theme.mp3");
+    await musicSounds.loadAll([
+      "sequence-theme.mp3",
+      "sequence-landing-page.mp3"
+    ]);
     view.updateState((){
       view.makeStateReady();
     });
@@ -61,37 +64,38 @@ class SequenceAppPresenter extends BasePresenter{
   }
 
   void playMusicSound() async{
-    if(isInMusicArea){
       if(sounds.isMusicActive){
-        await musicSounds.loop("sequence-theme.mp3");
+        if(musicArea == MusicState.stage){
+          await musicSounds.loop("sequence-theme.mp3");
+        }else if(musicArea == MusicState.landingPage){
+          await musicSounds.loop("sequence-landing-page.mp3");
+        }else{
+          stopMusicSound();
+        }
       }else{
         stopMusicSound();
       }
-    }
+    
   }
 
   void resumeMusicSound() async{
-    if(isInMusicArea){
-      if(sounds.isMusicActive){
-        int pos = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.musicPosition , error: -1);
-        print("music cursor pos : "+ pos.toString());
-        if(pos > 0){
-          await musicSounds.fixedPlayer.seek(Duration(milliseconds: pos));
-        }
-        await musicSounds.fixedPlayer.resume();
-        
+    if(sounds.isMusicActive){
+      int pos = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.musicPosition , error: -1);
+      print("music cursor pos : "+ pos.toString());
+      if(pos > 0){
+        await musicSounds.fixedPlayer.seek(Duration(milliseconds: pos));
       }
+      await musicSounds.fixedPlayer.resume();
+      
     }
   }
 
   void pauseMusicSound() async{
-    if(isInMusicArea){
-      if(sounds.isMusicActive){
-        int pos = await musicSounds.fixedPlayer.getCurrentPosition();
-        print("music pasu in pos : "+pos.toString());
-        (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.musicPosition, pos);
-        await musicSounds.fixedPlayer.pause();
-      }
+    if(sounds.isMusicActive){
+      int pos = await musicSounds.fixedPlayer.getCurrentPosition();
+      print("music pasu in pos : "+pos.toString());
+      (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.musicPosition, pos);
+      await musicSounds.fixedPlayer.pause();
     }
   }
 

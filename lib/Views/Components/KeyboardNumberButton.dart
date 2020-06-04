@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class KeyboardNumberButton extends StatelessWidget {
 
@@ -19,6 +20,7 @@ class KeyboardNumberButton extends StatelessWidget {
         return GestureDetector(
           onTap: (){
             if(!isHasBeenDisabled){
+              SequencesApp.of(context).presenter.playCoBell();
               keys.structurizeKeyPunched(label);
             }
           },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class PrimaryButton extends StatelessWidget {
 
@@ -10,7 +11,10 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: callback,
+      onTap: (){
+        SequencesApp.of(context).presenter.playCoBell();
+        callback();
+      },
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,

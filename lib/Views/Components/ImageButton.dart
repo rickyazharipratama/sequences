@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class ImageButton extends StatelessWidget {
   final VoidCallback callback;
@@ -11,7 +12,10 @@ class ImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: callback,
+      onTap: (){
+        SequencesApp.of(context).presenter.playCoBell();
+        callback();
+      },
       child: Padding(
         padding: EdgeInsets.all(5),
         child: Image.asset(

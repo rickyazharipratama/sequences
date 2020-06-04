@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class KeyboardActionButton extends StatelessWidget {
 
@@ -21,6 +22,7 @@ class KeyboardActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        SequencesApp.of(context).presenter.playCoBell();
         keys.structurizeKeyAction(action);
       },
       child: Container(

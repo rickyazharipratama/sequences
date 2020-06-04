@@ -18,6 +18,9 @@ class SequenceAppPresenter extends BasePresenter{
   AudioCache musicSounds;
   AudioPlayer _musicPlayer;
 
+  AudioCache sfxSounds;
+  AudioPlayer _sfxPlayer;
+
   MusicState musicArea = MusicState.none;
 
   SequenceAppPresenter({this.view}){
@@ -30,7 +33,16 @@ class SequenceAppPresenter extends BasePresenter{
     musicSounds = AudioCache(
       fixedPlayer: _musicPlayer,
       prefix: "sounds/"
-    );
+    )..disableLog();
+
+    _sfxPlayer = AudioPlayer(
+      mode: PlayerMode.LOW_LATENCY
+    )..setVolume(.25);
+
+    sfxSounds = AudioCache(
+      fixedPlayer: _sfxPlayer,
+      prefix: "sounds/"
+    )..disableLog();
   }
 
   @override
@@ -42,6 +54,9 @@ class SequenceAppPresenter extends BasePresenter{
     await musicSounds.loadAll([
       "sequence-theme.mp3",
       "sequence-landing-page.mp3"
+    ]);
+    await sfxSounds.loadAll([
+      "cobell.mp3"
     ]);
     view.updateState((){
       view.makeStateReady();
@@ -111,5 +126,11 @@ class SequenceAppPresenter extends BasePresenter{
   void clearSound(){
     releaseMusicSound();
     musicSounds.clearCache();
+  }
+
+  void playCoBell(){
+    if(sounds.isSoundActive){
+      sfxSounds.play("cobell.mp3");
+    }
   }
 }

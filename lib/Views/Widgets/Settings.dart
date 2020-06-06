@@ -39,11 +39,12 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
         10,
         5,
         10,
-        MediaQuery.of(context).padding.bottom+5),
+        MediaQuery.of(context).padding.bottom+10),
       child: stateStatus == PageStatus.ready ? 
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             
             Row(
@@ -89,15 +90,24 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
               label: "Privacy Policy",
             ),
 
-            !widget.isNeedMainMenu ?
-              ListButton(
-                callback: (){
-                  Navigator.of(context).pop(SettingList.credit);
-                },
-                label: "Credits",
-              )
-             : Container(),
+            ListButton(
+              callback: (){
 
+                showAboutDialog(
+                  context: context,
+                  applicationName: "Sequences",
+                  applicationVersion: DefaultConstantCollection.instance.version,
+                  applicationIcon: Image.asset(
+                    "assets/images/sequence-icon-square.png",
+                    alignment: Alignment.center,
+                    width: 75,
+                    fit: BoxFit.fitWidth,
+                  ),
+                );
+              },
+              label: "About",
+            ),
+          
             widget.isNeedMainMenu?
               ListButton(
                 callback: (){
@@ -106,29 +116,6 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
                 label: "Back to Main Menu",
               )
             :Container(),
-
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Expanded(
-                    child: Container(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 5,
-                      bottom: 5
-                    ),
-                    child: Text(
-                      "V "+DefaultConstantCollection.instance.version,
-                      maxLines: 1,
-                      textAlign: TextAlign.right,
-                      style: Theme.of(context).primaryTextTheme.button
-                    ),
-                  )
-                ],
-              )
-            )
           ],
         )
       : Container()

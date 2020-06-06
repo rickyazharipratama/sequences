@@ -115,8 +115,6 @@ class CommonUtils{
         mainMenuCallback();
       }
       Navigator.of(context).pop(0);
-    }else if(choice == SettingList.credit){
-      Navigatorium.instance.pushWithNoAnimate(context, child: CreditsPage());
     }else if(choice == SettingList.privacyPolicy){
       //should direct in to browser
     }

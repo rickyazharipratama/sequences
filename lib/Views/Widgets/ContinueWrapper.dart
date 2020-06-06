@@ -37,11 +37,19 @@ class ContinueWrapper extends StatelessWidget{
           children: <Widget>[
 
             Expanded(
-              child: LineSeparator(),
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: 10
+                ),
+                child: LineSeparator(),
+              ),
             ),
 
             Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.symmetric(
+                vertical: 5,
+                horizontal: 20
+              ),
               child: Text(
                 "Or",
                 style: Theme.of(context).primaryTextTheme.bodyText2,
@@ -49,9 +57,13 @@ class ContinueWrapper extends StatelessWidget{
             ),
 
             Expanded(
-              child: LineSeparator(),
+              child: Padding(
+                padding: EdgeInsets.only(
+                  right: 10
+                ),
+                child: LineSeparator(),
+              ),
             )
-
           ],
         ),
 

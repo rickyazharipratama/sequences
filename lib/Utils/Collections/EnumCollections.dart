@@ -23,8 +23,8 @@ enum HintState{
 
 enum SettingList{
   mainMenu,
-  credit,
-  privacyPolicy
+  privacyPolicy,
+  about
 }
 
 enum MusicState{

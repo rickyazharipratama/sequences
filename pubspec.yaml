@@ -32,6 +32,7 @@ flutter:
   assets:
     - assets/images/logo-light.png
     - assets/images/logo-dark.png
+    - assets/images/sequence-icon-square.png
     - assets/images/gear.png
     - assets/images/close.png
     - assets/images/check.png

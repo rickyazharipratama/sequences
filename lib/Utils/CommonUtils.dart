@@ -111,8 +111,10 @@ class CommonUtils{
     VoidCallback mainMenuCallback
   }){
     if(choice == SettingList.mainMenu){
-      mainMenuCallback();
-      Navigator.of(context).pop();
+      if(mainMenuCallback != null){
+        mainMenuCallback();
+      }
+      Navigator.of(context).pop(0);
     }else if(choice == SettingList.credit){
       Navigatorium.instance.pushWithNoAnimate(context, child: CreditsPage());
     }else if(choice == SettingList.privacyPolicy){

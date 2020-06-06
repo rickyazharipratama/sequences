@@ -10,7 +10,7 @@ class DefaultConstantCollection{
 
   //STAGES
   int defautCurrentStage = 1;
-  int totalStage = 10;
+  int totalStage = 45;
 
   double defaultSettingHeight = 400;
 

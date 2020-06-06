@@ -54,7 +54,7 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                           builder: (context) => Settings(
                             isNeedMainMenu: true,
                           ));
-                        CommonUtils.instance.settingPopChoice(context, choice: res);
+                        CommonUtils.instance.settingPopChoice(context,choice: res);
                       },
                       image: "assets/images/gear.png",
                     ),
@@ -73,7 +73,7 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                   int diff = end - start;
                   return Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 20,
+                      horizontal: 15,
                       vertical: 20
                     ),
                      child: Row(

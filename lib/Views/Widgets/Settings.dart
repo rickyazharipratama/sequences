@@ -101,9 +101,6 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
             widget.isNeedMainMenu?
               ListButton(
                 callback: (){
-                  if(SequencesApp.of(context).presenter.musicArea != MusicState.none){
-                    SequencesApp.of(context).presenter.stopMusicSound();
-                  }
                   Navigator.of(context).pop(SettingList.mainMenu);
                 },
                 label: "Back to Main Menu",

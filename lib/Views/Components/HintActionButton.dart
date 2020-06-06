@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
+import 'package:sequences/Views/SequencesApp.dart';
 
 class HintActionButton extends StatelessWidget {
 
@@ -16,8 +17,17 @@ class HintActionButton extends StatelessWidget {
     return Observer(
       builder: (context)=> GestureDetector(
         onTap: (){
+          SequencesApp.of(context).presenter.playCoBell();
           if(keys.hintState == HintState.ready){
             keys.structurizeKeyAction(KeyboardAction.hint);
+          }else if(keys.hintState == HintState.failed){
+            CommonUtils.instance.showToast(context,
+              msg: "Can't load ads to unlock hint"
+            );
+          }else if(keys.hintState == HintState.loading){
+            CommonUtils.instance.showToast(context,
+              msg: "Preparing ads to unlock hint"
+            );
           }
         },
         child: Container(

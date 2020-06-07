@@ -4,631 +4,631 @@
         "a":5,
         "firstHint":"Basic number sequence",
         "formula":"f(n) = n",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "2":{
         "q":"2,4,6,8,...",
         "a":10,
-        "firstHint":"Basic number sequence based on multiply",
+        "firstHint":"Based on multiply",
         "formula":"f(n) = 2n",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "3":{
         "q":"3,6,9,12,...",
         "a":15,
-        "firstHint":"number sequence based on multiply.",
+        "firstHint":"Based on multiply.",
         "formula":"f(n) = 3n",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "4":{
         "q":"5,10,15,20,...",
         "a":25,
-        "firstHint":"number sequence based on multiply",
+        "firstHint":"Based on multiply",
         "formula":"f(n) = 5n",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "5":{
         "q":"0,1,1,2,3,5,...",
         "a":8,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1) = 0, f(2) = 1, f(n) = f(n-1) + f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "6":{
         "q":"3,8,13,18,...",
         "a":23,
-        "firstHint":"number sequence based on multiply",
+        "firstHint":"Based on multiply and subtraction",
         "formula":"f(n) = 5n - c",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "7":{
         "q":"7,14,21,28,...",
         "a":35,
-        "firstHint":"number sequence based on multiply",
+        "firstHint":"Based on multiply",
         "formula":"f(n) = 7n",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "8":{
         "q":"1,2,2,4,8,...",
         "a":32,
         "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(2)=2, f(n) = f(n-1) * f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     
     "9":{
         "q":"0,1,1,1,2,3,4,6,...",
         "a":9,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1)=0, f(2)=1, f(3)=1, f(n)=f(n-1) + f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "10":{
         "q":"4,11,18,25,...",
         "a":32,
-        "firstHint":"number sequence based on multiply",
+        "firstHint":"Based on multiply and subtraction",
         "formula":"f(n) = 7n - c",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "11":{
         "q":"0,1,1,1,2,2,3,4,...",
         "a":5,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1)=0, f(2)=1, f(3)=1, f(n)=f(n-2) + f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
 
     "12":{
         "q":"1,2,3,4,5,7,10,14,...",
         "a":19,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(4)=4, f(n)=f(n-1) + f(n-4)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "13":{
         "q":"1,2,3,4,4,6,7,10,...",
         "a":11,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(4)=4, f(n)=f(n-2) + f(n-4)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "14":{
         "q":"1,2,3,3,6,18,...",
         "a":54,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) * f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "15":{
         "q":"1,2,3,4,3,5,7,7,...",
         "a":8,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(4)=4, f(n)=f(n-3) + f(n-4)",
-        "removeKeyCount": 5
+        "removeKeyCount": 3
     },
     "16":{
         "q":"1,2,6,24,...",
         "a":120,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply",
         "formula":"f(n) = n!",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "17":{
         "q":"1,2,3,4,4,8,...",
         "a":24,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(4)=4,f(n)=f(n-1) * f(n-4)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "18":{
         "q":"1,2,3,5,8,...",
         "a":13,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = (2 * f(n-1)) - f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "19":{
         "q":"1,2,3,2,6,6,...",
         "a":12,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = f(n-2) * f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "20":{
         "q":"1,2,3,4,3,8,9,...",
         "a":32,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(4)=4, f(n) = f(n-2) * f(n-4)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "21":{
         "q":"1,4,9,16,25,...",
         "a":36,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(n) = n^2",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "22":{
         "q":"1,2,3,4,2,6,12,...",
         "a":8,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(4)=4, f(n) = f(n-3) * f(n-4)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "23":{
         "q":"1,2,5,12,...",
         "a":29,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(n) = (2 * f(n-1)) + f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "24":{
         "q":"0,1,2,1,0,1,2,...",
         "a":1,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on addition and subtraction result of previous number",
         "formula":"f(1)=0, f(2)=1, f(3)=2, f(n)=f(n-1) + f(n-3) - f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "25":{
         "q":"1,2,5,22,...",
         "a":115,
-        "firstHint":"Based on numbering result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1) = 1, f(2) = 2, f(n) = n! - f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "26":{
         "q":"1,2,3,6,11,20,...",
         "a":37,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) + f(n-2) + f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "27":{
         "q":"1,2,3,7,23,...",
         "a":164,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) * f(n-2) + f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "28":{
-        "q":"1,4,27,64,...",
-        "a":125,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "q":"1,4,27,256,...",
+        "a":3125,
+        "firstHint":"Based on power of number",
         "formula":"f(n) = n^n",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "29":{
         "q":"1,2,4,10,...",
         "a":44,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(n)=f(n-1) * f(n-2) + f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "30":{
         "q":"1,2,4,8,...",
         "a":16,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(n) = (3 * f(n-1)) - (2 * f(n-2))",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "31":{
         "q":"1,2,3,5,13,...",
         "a":44,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = f(n-1) * f(n-3) + f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "32":{
         "q":"1,1,5,19,...",
         "a":101,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1) = 1, f(n) = n! - f(n-1)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "33":{
         "q":"1,2,3,4,10,33,...",
         "a":136,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) * f(n-3) + f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "34":{
         "q":"1,2,3,1,-1,-4,-3,...",
         "a":7,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) * f(n-3) - f(n-2)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "35":{
         "q":"1,2,3,5,13,...",
         "a":62,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) * f(n-2) - f(n-3)",
-        "removeKeyCount": 5
+        "removeKeyCount": 4
     },
     "36":{
         "q":"1,2,9,64,...",
         "a":625,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(n) = n^(n-1)",
         "removeKeyCount": 5
     },
     "37":{
         "q":"1,2,3,2,2,3,...",
         "a":4,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n)=f(n-1) * f(n-3) - f(n-3)",
         "removeKeyCount": 5
     },
     "38":{
         "q":"1,2,3,6,14,...",
         "a":33,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on addition and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = (3 * f(n-1)) - (2 * f(n-2)) + f(n-3)",
         "removeKeyCount": 5
     },
     "39":{
         "q":"2,4,8,16,32,...",
         "a":64,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(n) = 2^n",
         "removeKeyCount": 5
     },
     "40":{
         "q":"1,2,3,7,17,...",
         "a":45,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = (3 * f(n-1)) - (2 * f(n-3))",
         "removeKeyCount": 5
     },
     "41":{
         "q":"1,1,3,16,...",
         "a":125,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(1) = 1,f(n) = n^(n-2)",
         "removeKeyCount": 5
     },
     "42":{
         "q":"1,2,3,9,26,...",
         "a":81,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply,addition and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = (3 * f(n-1)) - (2 * f(n-3)) + f(n-2)",
         "removeKeyCount": 5
     },
     "43":{
         "q":"1,2,3,12,40,141,...",
         "a":491,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply,addition and subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = (3 * f(n-1)) + (2 * f(n-2)) - f(n-3)",
         "removeKeyCount": 5
     },
     "44":{
         "q":"1,0,6,12,96,",
         "a":528,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1) = 1,f(n) = n! - (2 * f(n-1))",
         "removeKeyCount": 5
     },
     "45":{
         "q":"1,2,3,9,28,81,...",
         "a":233,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on  multiply, addition, subtraction result of previous number",
         "formula":"f(1)=1, f(2)=2, f(3)=3, f(n) = (3 * f(n-1)) + (2 * f(n-3)) - f(n-2)",
         "removeKeyCount": 5
     },
     "46":{
         "q":"0,2,6,12,20,...",
         "a":30,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction number",
         "formula":"f(n) = n * (n -1)",
         "removeKeyCount": 5
     },
     "47":{
-        "q":"1,2,6,24,...",
-        "a":144,
-        "firstHint":"Based on numbering and subtraction result of previous number",
-        "formula":"f(1)=1, f(n) = n * f(n-1)",
+        "q":"1,2,3,8,15,...",
+        "a":48,
+        "firstHint":"Based on multiply result of previous number",
+        "formula":"f(1)=1, f(2)=2, f(n) = n * f(n-2)",
         "removeKeyCount": 5
     },
     "48":{
-        "q":"1,-1,9,15,...",
-        "a":75,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "q":"1,-1,9,-3,...",
+        "a":129,
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1)=1, f(n) = n! - (3 * f(n-1))",
         "removeKeyCount": 5
     },
     "49":{
         "q":"1,4,24,192,...",
         "a":1920,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply result of previous number",
         "formula":"f(1)=1, f(n) = 2n * f(n-1)",
         "removeKeyCount": 5
     },
     "50":{
         "q":"1,6,48,480,...",
         "a":5760,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number",
         "formula":"f(1)=1, f(n) = f(n-1) * (2n + 2)",
         "removeKeyCount": 5
     },
     "51":{
         "q":"0,3,8,15,24,...",
         "a":35,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power and subtraction of number",
         "formula":"f(n) = n^2 - c",
         "removeKeyCount": 5
     },
     "52":{
         "q":"1,1,4,21,...",
         "a":116,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number",
         "formula":"f(n) = n! - (n-1)",
         "removeKeyCount": 5
     },
     "53":{
         "q":"2,5,10,17,26,...",
         "a":37,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power and addition of number",
         "formula":"f(n) = n^2 + c",
         "removeKeyCount": 5
     },
     "54":{
         "q":"2,3,10,7,26,...",
         "a":11,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power, addition and/or subtraction from different equation of number",
         "formula":"f(n) = n^2 + c,  n % 2 = 1 || f(n) = 2n - c, n % 2 = 0",
         "removeKeyCount": 5
     },
     "55":{
         "q":"1,3,12,60,...",
         "a":360,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply, divide and addition of number",
         "formula":"f(n) = (n+1)! / 2",
         "removeKeyCount": 5
     },
     "56":{
         "q":"1,8,27,64,...",
         "a":125,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(n) = n^3",
         "removeKeyCount": 5
     },
     "57":{
         "q":"-1,4,21,56,...",
         "a":115,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power and subtraction of number",
         "formula":"f(n) = n^3 - 2n",
         "removeKeyCount": 5
     },
     "58":{
         "q":"1,3,7,15,31,...",
         "a":63,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power and subtraction of number",
         "formula":"f(n) = 2^n - 1",
         "removeKeyCount": 5
     },
     "59":{
         "q":"1,2,5,22,115,...",
         "a":698,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number",
         "formula":"f(1) = 1, f(2) = 2, f(n) = n! - f(n-2)",
         "removeKeyCount": 5
     },
     "60":{
         "q":"1,3,6,10,15,...",
         "a":21,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply, divide and addition of number",
         "formula":"f(1) = 1, f(2) = 2, f(n) = (n * (n+1)) / 2",
         "removeKeyCount": 5
     },
     "61":{
         "q":"3,7,16,29,...",
         "a":56,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition of number with unique number sequence",
         "formula":"f(n) = n# + c , # ∈ Prime number",
         "removeKeyCount": 5
     },
     "62":{
         "q":"1,3,3,60,60,2520,...",
         "a":2520,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply, addition, and/or subtraction of number and/or result of previous number from different equation",
         "formula":"f(1) = 1, f(n) = (n + 1)! / 2, n % 2 = 0 || f(n) = n! - f(n-1), n % 2 = 1",
         "removeKeyCount": 5
     },
     "63":{
         "q":"6,14,32,58,...",
         "a":112,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition of number with unique number sequence",
         "formula":"f(n) = 2n# + c, # ∈ Prime number",
         "removeKeyCount": 5
     },
     "64":{
         "q":"-1,7,47,223,...",
         "a":959,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on powe and subtraction of number",
         "formula":"f(n) = (2^n - 1)^2 - c",
         "removeKeyCount": 5
     },
     "65":{
         "q":"4,12,24,36,...",
         "a":50,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply of number with unique number sequence",
         "formula":"f(n) = n#, # ∈ Composite number",
         "removeKeyCount": 5
     },
     "66":{
         "q":"3,11,29,55,...",
         "a":109,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number with unique number sequence",
         "formula":"f(n) = 2n# - c, # ∈ Prime number",
         "removeKeyCount": 5
     },
     "67":{
         "q":"2,8,18,28,...",
         "a":40,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number with unique number sequence",
         "formula":"f(n) = n# - 2n, # ∈ Composite number",
         "removeKeyCount": 5
     },
     "68":{
         "q":"5,17,257,...",
         "a":65537,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power and addition of number",
         "formula":"f(n) = 2^(2^n) + c",
         "removeKeyCount": 5
     },
     "69":{
         "q":"1,32,243,1024,...",
         "a":3125,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(n) = n^5",
         "removeKeyCount": 5
     },
     "70":{
         "q":"5,8,13,18,...",
         "a":27,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition of number",
         "formula":"f(n) = 2# + n, # ∈ Prime number",
         "removeKeyCount": 5
     },
     "71":{
         "q":"1,16,81,256,...",
         "a":625,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number",
         "formula":"f(n) = n^4",
         "removeKeyCount": 5
     },
     "72":{
         "q":"-1,12,75,248,...",
         "a":615,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power and subtraction of number",
         "formula":"f(n) = n^4 - 2n",
         "removeKeyCount": 5
     },
     "73":{
-        "q":"8,10,14,17,...",
+        "q":"6,10,14,17,...",
         "a":20,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition of number with unique number sequence",
         "formula":"f(n) = # + 2n, # ∈ Composite number",
         "removeKeyCount": 5
     },
     "74":{
         "q":"-1,28,237,1016,...",
         "a":3115,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power,multiply and subtraction of number",
         "formula":"f(n) = n^5 - 2n",
         "removeKeyCount": 5
     },
     "75":{
         "q":"-2,10,72,244,...",
         "a":610,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power, multiply and subtraction of number",
         "formula":"f(n) = n^4 - 3n",
         "removeKeyCount": 5
     },
     "76":{
-        "q":"-2,26,236,1012,...",
+        "q":"-2,26,234,1009,...",
         "a":3110,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power, multiply and subtraction of number",
         "formula":"f(n) = n^5 - 3n",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "77":{
         "q":"4,5,9,13,...",
         "a":23,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number with unique number sequence",
         "formula":"f(n) = 3# - 2n, # ∈ Prime number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "78":{
         "q":"-3,24,231,1008,...",
         "a":3105,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power, multiply and subtraction of number",
         "formula":"f(n) = n^5 - 4n",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "79":{
         "q":"1,4,6,12,15,...",
         "a":24,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply of number with unique number sequence",
         "formula":"f(n) = n#, # ∈ golomb number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "80":{
         "q":"1,1,2,3,5,...",
         "a":10,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply, divide and addition result of number and previous number",
         "formula":"f(n) = (1 + x1 ^ 2 + x2^2+...+xn^2) / n",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "81":{
         "q":"14,62,254,...",
         "a":1022,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on ppower, addition and subtraction of number",
         "formula":"f(n) = (2^n+1)^2 - c",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "82":{
         "q":"3,4,7,10,17,...",
         "a":20,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number with unique number sequence",
         "formula":"f(n) = 2# - n, # ∈ Prime number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "83":{
         "q":"2,4,4,8,8,16,16,16,...",
         "a":32,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power of number with unique number sequence",
         "formula":"f(n) = 2^#, # ∈ Golomb number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "84":{
-        "q":"2,4,7,11,16...",
+        "q":"2,4,7,11,16,...",
         "a":22,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on power, divide and addition of number",
         "formula":"f(n) = (n^2 + n + 2) / 2",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "85":{
         "q":"1,11,5,13,7,...",
         "a":17,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number with unique number sequence",
         "formula":"f(1) = 1, f(n) = 2# - f(n-1), # ∈ Composite number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "86":{
         "q":"2,2,4,6,12,...",
         "a":14,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number with unique number sequence",
         "formula":"f(n) = 2# - 2n, # ∈ prime number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "87":{
         "q":"2,4,3,5,4,...",
         "a":6,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction of number with unique number sequence",
         "formula":"f(n) = 3# - n, # ∈ Golomb number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "88":{
         "q":"1,17,7,20,10,...",
         "a":26,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and subtraction result of previous number with unique number sequence",
         "formula":"f(1) = 1, f(n) = 3# - f(n-1), # ∈ Composite number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "89":{
         "q":"1,8,7,14,19,...",
         "a":20,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on multiply and addition result of previous number with unique number sequence",
         "formula":"f(1) = 1, f(n) = 3# + f(n-1), # ∈ Prime number",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     },
     "90":{
-        "q":"1,2,3,3,5,8,8,13",
+        "q":"1,2,3,3,5,8,8,13,...",
         "a":21,
-        "firstHint":"Based on numbering and subtraction result of previous number",
+        "firstHint":"Based on addition result of previous number from different equeation",
         "formula":"f(1) = 1, f(2) = 2, f(3) = 3, f(n) =  f(n-2) + f(n-3), n % 3 = 1 || f(n) = f(n-1) + f(n-3), n % 3 = 2 || f(n) = f(n-1) + f(n-2), n % 3 = 0",
-        "removeKeyCount": 5
+        "removeKeyCount": 6
     }
 }

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
@@ -18,5 +21,9 @@ void main(){
     print("run release mode");
     Admob.initialize();
   }
-  runApp(SequencesApp());
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+  runZonedGuarded((){
+    runApp(SequencesApp());
+  },
+  Crashlytics.instance.recordError);
 }

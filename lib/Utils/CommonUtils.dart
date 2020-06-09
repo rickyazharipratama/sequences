@@ -1,11 +1,10 @@
 import 'dart:io';
 
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
-import 'package:sequences/Views/Pages/CreditsPage.dart';
 import 'package:toast/toast.dart';
 
 class CommonUtils{
@@ -118,5 +117,21 @@ class CommonUtils{
     }else if(choice == SettingList.privacyPolicy){
       //should direct in to browser
     }
+  }
+
+  Future<RemoteConfig> initiateRemoteConfig() async{
+     RemoteConfig rc = await RemoteConfig.instance;
+
+     try{
+       await rc.fetch(
+         expiration: Duration(
+           minutes: 5
+         )
+       );
+       await rc.activateFetched();
+     }catch(exception){
+       print("error remote Config : "+ exception.toString());
+     }
+     return rc;
   }
 }

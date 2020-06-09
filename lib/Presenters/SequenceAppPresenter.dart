@@ -18,6 +18,8 @@ class SequenceAppPresenter extends BasePresenter{
   AudioCache musicSounds;
   AudioPlayer _musicPlayer;
 
+  AudioPlayerState musicState = AudioPlayerState.STOPPED;
+
   AudioCache sfxSounds;
   AudioPlayer _sfxPlayer;
 
@@ -27,8 +29,11 @@ class SequenceAppPresenter extends BasePresenter{
 
     _musicPlayer = AudioPlayer(
       mode: PlayerMode.MEDIA_PLAYER
-    );
-    _musicPlayer.setVolume(.3);
+    )..setVolume(.35)
+    ..onPlayerStateChanged.listen((event) {
+      print("music audio state : "+ event.toString());
+      musicState = event;
+    });
 
     musicSounds = AudioCache(
       fixedPlayer: _musicPlayer,
@@ -95,13 +100,17 @@ class SequenceAppPresenter extends BasePresenter{
 
   void resumeMusicSound() async{
     if(sounds.isMusicActive){
-      int pos = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.musicPosition , error: -1);
-      print("music cursor pos : "+ pos.toString());
-      if(pos > 0){
-        await musicSounds.fixedPlayer.seek(Duration(milliseconds: pos));
+      if(musicState == AudioPlayerState.PAUSED){
+        int pos = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.musicPosition , error: -1);
+        print("music cursor pos : "+ pos.toString());
+        if(pos > 0){
+          await musicSounds.fixedPlayer.seek(Duration(milliseconds: pos));
+       
+        }
+        await musicSounds.fixedPlayer.resume();
+      }else{
+        playMusicSound();
       }
-      await musicSounds.fixedPlayer.resume();
-      
     }
   }
 

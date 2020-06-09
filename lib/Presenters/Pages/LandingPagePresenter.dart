@@ -3,6 +3,7 @@ import 'package:sequences/PresenterViews/Pages/LandingPagePresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/SequencesApp.dart';
 
 class LandingPagePresenter extends BasePresenter{
@@ -19,10 +20,14 @@ class LandingPagePresenter extends BasePresenter{
   @override
   void initiateData() async{
     super.initiateData();
+    rc = await CommonUtils.instance.initiateRemoteConfig();
     sendCurrentScreen(DefaultConstantCollection.instance.landingPage);
     await currentStages.retrieveCurrentStage();
     playBackgroundMusic();
-    view.updateState(view.makeStatusReady);
+    view.updateState((){
+      view.makeStatusReady();
+      checkMaintenance(view.currentContext());
+    });
   }
 
   @override

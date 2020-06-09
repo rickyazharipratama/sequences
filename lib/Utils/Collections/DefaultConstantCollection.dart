@@ -27,6 +27,7 @@ class DefaultConstantCollection{
   String levelSelectPage = "Level_Select_Page";
   String creditPage = "Credit_Page";
   String privacyPolicy = "Privacy_Policy_Page";
+  String maintenance = "Maintenance";
   
 
   //event
@@ -42,4 +43,8 @@ class DefaultConstantCollection{
   String admobIdAndroid ="ca-app-pub-5718875531666553~2256977267";
   String admobBannerIdAndroid = "ca-app-pub-5718875531666553/6004650589";
   String admobRewardIdAndroid = "ca-app-pub-5718875531666553/3186915553";
+
+
+  //Remote Config
+  String get isMaintenance => environment == FlavorEnvironment.release ? "isMaintenance" : "isMaintenance";
 }

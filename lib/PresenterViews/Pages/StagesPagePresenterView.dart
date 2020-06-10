@@ -12,6 +12,7 @@ import 'package:sequences/Utils/Helpers/SharedPreferenceHelper.dart';
 import 'package:sequences/Views/Pages/CorrectAnswer.dart';
 import 'package:sequences/Views/Pages/CreditsPage.dart';
 import 'package:sequences/Views/Widgets/HIntWrapper.dart';
+import 'package:sequences/Views/Widgets/ShareToYourFriend.dart';
 
 class StagesPagePresenterView implements BasePresenterView{
 
@@ -90,7 +91,6 @@ class StagesPagePresenterView implements BasePresenterView{
   void updateState(callback) {
   }
 
-
   Future<bool> goToCorrectAnswer() async{
     await Navigatorium.instance.pushWithNoAnimate(
       currentContext(),
@@ -118,5 +118,16 @@ class StagesPagePresenterView implements BasePresenterView{
     ext();
     Navigator.of(currentContext()).pop();
     return true;
+  }
+
+  goToShareToYourFriend({
+    String desc
+  }){
+    showModalBottomSheet(
+      context: currentContext(), 
+      builder: (context) => ShareToYourFriend(
+        desc: desc,
+      ),
+    );
   }
 }

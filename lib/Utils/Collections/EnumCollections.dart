@@ -32,3 +32,9 @@ enum MusicState{
   landingPage,
   stage
 }
+
+enum LevelIconSimbol{
+  closed,
+  current,
+  open
+}

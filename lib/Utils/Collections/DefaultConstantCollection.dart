@@ -47,4 +47,7 @@ class DefaultConstantCollection{
 
   //Remote Config
   String get isMaintenance => environment == FlavorEnvironment.release ? "isMaintenance" : "isMaintenance";
+
+  //dynamicLink
+  String prefixDynamicLink = "https://sequences.page.link";
 }

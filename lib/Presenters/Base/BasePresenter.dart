@@ -2,10 +2,8 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
-import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Utils/Helpers/AnalyticHelper.dart';
 import 'package:sequences/Views/Pages/Maintenance.dart';
-import 'package:sequences/Views/SequencesApp.dart';
 
 abstract class BasePresenter{
 

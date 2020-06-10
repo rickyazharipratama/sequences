@@ -22,6 +22,9 @@ dependencies:
   audioplayers: ^0.15.1
   firebase_remote_config: ^0.3.1
   firebase_crashlytics: ^0.1.3+3
+  firebase_dynamic_links: ^0.5.1
+  firebase_storage: ^3.1.6
+  share: ^0.6.4+3
   
 dev_dependencies:
   flutter_test:
@@ -41,11 +44,13 @@ flutter:
     - assets/images/light-on.png
     - assets/images/eraser.png
     - assets/images/check-circle.png
+    - assets/images/current-circle.png
     - assets/images/lock.png
     - assets/images/coret-logo.png
     - assets/images/no-light.png
     - assets/images/thanks-for-playing.png
     - assets/images/maintenance.png
+    - assets/images/seru.png
 
     - assets/stages/basic.json
 

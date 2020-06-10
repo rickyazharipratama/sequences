@@ -21,7 +21,8 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
   @override
   void initState() {
     super.initState();
-    presenter = LevelPagePresenter(view: this);
+    presenter = LevelPagePresenter(view: this)
+    ..initiateData();
   }
 
   @override
@@ -79,12 +80,17 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                        children: List.generate(diff, (index){
-                         int part = start + index;
+                         int part = start + index + 1;
+                         print("part : "+part.toString()+", current stage: "+presenter.stages.currentStage.toString());
                          return Level(
-                           label: "Level "+(part+1).toString(),
-                           isOpen: presenter.stages.currentStage >= part,
+                           label: "Level "+(part).toString(),
+                           openState: presenter.stages.currentStage  == part?
+                            LevelIconSimbol.current
+                            : presenter.stages.currentStage > part ?
+                              LevelIconSimbol.open
+                              : LevelIconSimbol.closed,
                            callback: (){
-                              if(presenter.stages.currentStage >= part){
+                              if(presenter.stages.currentStage + 1 >= part){
                                 Navigator.of(context).pop(part + 1);
                               }
                            },

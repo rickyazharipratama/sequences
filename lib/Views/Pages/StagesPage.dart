@@ -2,7 +2,6 @@ import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Pages/StagesPagePresenterView.dart';
 import 'package:sequences/Presenters/Pages/StagesPagePresenter.dart';
-import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
@@ -113,6 +112,7 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                   ),
                   child: SequencesKeyboard(
                     keys: presenter.keys,
+                    hintCallback: presenter.hintActionTapped,
                   ),
                 ),
               ],

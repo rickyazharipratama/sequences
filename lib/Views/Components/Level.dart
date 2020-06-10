@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 
 class Level extends StatelessWidget {
 
   final VoidCallback callback;
   final String label;
-  final bool isOpen;
+  final LevelIconSimbol openState;
 
-  Level({@required this.callback, @required this.label, this.isOpen : false});
+  Level({@required this.callback, @required this.label, this.openState : LevelIconSimbol.closed});
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +17,19 @@ class Level extends StatelessWidget {
         child: Column(
           children: <Widget>[
               Image.asset(
-                isOpen ? 
+                openState ==LevelIconSimbol.open ? 
                   "assets/images/check-circle.png"
-                : "assets/images/lock.png",
+                : openState == LevelIconSimbol.current ?
+                  "assets/images/current-circle.png"
+                  : "assets/images/lock.png",
                 width: 35,
                 fit: BoxFit.contain,
                 alignment: Alignment.center,
-                color: isOpen ? 
+                color: openState == LevelIconSimbol.open ? 
                   Theme.of(context).primaryColor
-                  : Theme.of(context).cardColor
+                  : openState == LevelIconSimbol.current ? 
+                    Theme.of(context).hintColor
+                    : Theme.of(context).cardColor
               ),
 
               Padding(

@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:share/share.dart';
 import 'package:toast/toast.dart';
 
 class CommonUtils{
@@ -133,5 +136,55 @@ class CommonUtils{
        print("error remote Config : "+ exception.toString());
      }
      return rc;
+  }
+
+  Future<Uri> generateHelpDynamicLink() async{
+    DynamicLinkParameters params = DynamicLinkParameters(
+      uriPrefix: DefaultConstantCollection.instance.prefixDynamicLink,
+      link: Uri.parse(DefaultConstantCollection.instance.prefixDynamicLink),
+      androidParameters: AndroidParameters(
+        packageName: "std.coret.sequences",
+        minimumVersion: 16,
+      ),
+      googleAnalyticsParameters: GoogleAnalyticsParameters(
+        campaign: "Collaboration",
+        medium: "Apps",
+        source: "user"),
+      iosParameters: IosParameters(
+        bundleId: "std.coret.sequences",
+        minimumVersion: "1.0.0"
+      ),
+      socialMetaTagParameters: SocialMetaTagParameters(
+        imageUrl: await getIconUrlFromFirebaseStorage(),
+        title: "Can you solve it!",
+        description: "Help me to solve this riddle and find many interesting sequence riddles waiting to solve."
+      )
+    );
+    Uri result;
+    try{
+      ShortDynamicLink shortLink = await params.buildShortLink();
+      result = shortLink.shortUrl;
+    }catch(exception){
+      result = await params.buildUrl();
+      print(exception.toString());
+    }
+    return result;
+  }
+
+  shareHelptoOthers(BuildContext context,{String subject, Uri link,String desc}){
+    String dsc = desc+"\n\n"+link.toString();
+    RenderBox box = context.findRenderObject();
+    Share.share(
+      dsc,
+      subject: link.toString(),
+      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+    );
+  }
+
+  Future<Uri> getIconUrlFromFirebaseStorage() async{
+    StorageReference ref =  FirebaseStorage.instance.ref().child("ic_launcher_sequence.png");
+    print("icon name : "+ await ref.getName());
+    print("url name : "+ (await ref.getDownloadURL()).toString());
+    return null;
   }
 }

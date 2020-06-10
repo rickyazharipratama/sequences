@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/Models/RX/QuestionRxModel.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
+import 'package:sequences/Views/Components/LineSeparator.dart';
+import 'package:sequences/Views/Components/SecondaryButton.dart';
 
 class HintWrapper extends StatelessWidget {
 
@@ -36,7 +39,8 @@ class HintWrapper extends StatelessWidget {
                   text: TextSpan(
                     text: "Hint",
                     style: Theme.of(context).primaryTextTheme.bodyText1.apply(
-                      color: Theme.of(context).focusColor
+                      color: Theme.of(context).focusColor,
+                      fontWeightDelta: 3
                     )
                   ),
                 ),
@@ -54,11 +58,16 @@ class HintWrapper extends StatelessWidget {
             padding: EdgeInsets.only(top: 15),
           ),
 
-          Text(
-            hintSource.sequence.firstHint,
-            textAlign: TextAlign.left,
-            style: Theme.of(context).primaryTextTheme.bodyText2.apply(
-              color: Theme.of(context).focusColor
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10
+            ),
+            child: Text(
+              hintSource.sequence.firstHint,
+              textAlign: TextAlign.left,
+              style: Theme.of(context).primaryTextTheme.bodyText2.apply(
+                color: Theme.of(context).focusColor
+              ),
             ),
           ),
 
@@ -68,30 +77,94 @@ class HintWrapper extends StatelessWidget {
             ),
           ),
 
-          hintWrap < 3 ?
-          Text(
-            hintSource.sequence.removeKeyCount.toString()+" number keys on keyboard has been disabled",
-            textAlign: TextAlign.left,
-            style: Theme.of(context).primaryTextTheme.bodyText2.apply(
-              color: Theme.of(context).focusColor
-            ),
-          ) : Container(),
-
           Padding(
-            padding: EdgeInsets.only(
-              top: hintWrap < 2  ? 10 : 0
+            padding: EdgeInsets.symmetric(
+              horizontal: 10
+            ),
+            child: Text(
+              (hintWrap < 3 ? hintSource.sequence.removeKeyCount.toString()+" number keys on keyboard has been disabled" : "???"),
+              textAlign: TextAlign.left,
+              style: Theme.of(context).primaryTextTheme.bodyText2.apply(
+                color: Theme.of(context).focusColor
+              ),
             ),
           ),
 
-          hintWrap < 2 ?
-          Text(
-            "Formula: "+hintSource.sequence.formula,
-            textAlign: TextAlign.left,
-            style: Theme.of(context).primaryTextTheme.bodyText2.apply(
-              color: Theme.of(context).focusColor
+          Padding(
+            padding: EdgeInsets.only(
+              top: 10
             ),
-          ) : Container()
+          ),
 
+          
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10
+            ),
+            child: Text(
+              (hintWrap < 2 ? "Formula: "+ hintSource.sequence.formula : "???"),
+              textAlign: TextAlign.left,
+              style: Theme.of(context).primaryTextTheme.bodyText2.apply(
+                color: Theme.of(context).focusColor
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 15,
+            ),
+            child: LineSeparator(),
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 0,
+            ),
+            child: Text(
+              "Need more help?",
+              style: Theme.of(context).primaryTextTheme.bodyText1.apply(
+                fontWeightDelta: 1,
+                color: Theme.of(context).focusColor
+              ),
+            ),
+          ),
+          
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            child: Text(
+              "Share to your friends and get more help to solve this level.",
+              style: Theme.of(context).primaryTextTheme.bodyText2.apply(
+                color: Theme.of(context).focusColor
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 0,
+            ),
+            child: SecondaryButton(
+              text: "Share it",
+              color: Theme.of(context).focusColor,
+              callback: () async{
+                //should be generate dynamic link
+                print("clicked");
+                String desc = "The Sequence is : "+hintSource.sequence.question+"\n\nFirst hint : "+hintSource.sequence.firstHint;
+                if(hintWrap < 2)
+                  desc+="\n\nFormula : "+hintSource.sequence.formula;
+      
+                CommonUtils.instance.shareHelptoOthers(context,
+                  link: await CommonUtils.instance.generateHelpDynamicLink(),
+                  subject: "Can you solve it!",
+                  desc: desc
+                );
+              },
+            ),
+          )
         ],
       ),
     );

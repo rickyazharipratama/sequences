@@ -9,9 +9,11 @@ import 'package:sequences/Views/Components/KeyboardTextField.dart';
 class SequencesKeyboard extends StatelessWidget {
 
   final VirtualKeyboardModel keys;
+  final VoidCallback hintCallback;
 
   SequencesKeyboard({
-    @required this.keys
+    @required this.keys,
+    @required this.hintCallback
   });
 
   @override
@@ -26,6 +28,7 @@ class SequencesKeyboard extends StatelessWidget {
               flex: 1,
               child: HintActionButton(
                 keys: keys,
+                hintCallback: hintCallback,
               )
             ),
             // textfield

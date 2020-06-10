@@ -7,7 +7,6 @@ import 'package:sequences/Views/Components/CheckBoxAction.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/ListButton.dart';
 import 'package:sequences/Views/Components/SwitcherAction.dart';
-import 'package:sequences/Views/SequencesApp.dart';
 
 class Settings extends StatefulWidget {
 

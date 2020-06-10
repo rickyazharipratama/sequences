@@ -142,9 +142,7 @@ class StagesPagePresenter extends BasePresenter{
       if(await view.admobReward.isLoaded){
         view.admobReward.show();
       }else{
-        CommonUtils.instance.showToast(view.currentContext(),
-          msg: "There is no  ads available to unlock hint."
-        );
+        view.goToShareToYourFriend();
       }
     }else{
       onAdmobRewardCallback(1);
@@ -182,6 +180,25 @@ class StagesPagePresenter extends BasePresenter{
       stages.hintCounter--;
     }else{
 
+    }
+  }
+
+  hintActionTapped(){
+    SequencesApp.of(view.currentContext()).presenter.playCoBell();
+    if(keys.hintState == HintState.ready){
+      keys.structurizeKeyAction(KeyboardAction.hint);
+    }else if(keys.hintState == HintState.failed){
+      String desc = "The Sequence is : "+seq.sequence.question+"\n\nFirst hint : "+seq.sequence.firstHint;
+      if(stages.hintCounter < 2)
+        desc+="\n\nFormula : "+seq.sequence.formula;
+      
+      view.goToShareToYourFriend(
+        desc: desc
+      );
+    }else if(keys.hintState == HintState.loading){
+      CommonUtils.instance.showToast(view.currentContext(),
+        msg: "Preparing ads to unlock hint"
+      );
     }
   }
 }

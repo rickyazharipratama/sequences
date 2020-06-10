@@ -5,8 +5,9 @@ class SecondaryButton extends StatelessWidget {
 
   final VoidCallback callback;
   final String text;
+  final Color color;
 
-  SecondaryButton({@required this.callback, @required this.text});
+  SecondaryButton({@required this.callback, @required this.text, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class SecondaryButton extends StatelessWidget {
         decoration: BoxDecoration(
           color:  Colors.transparent,
           border: Border.all(
-            color: Theme.of(context).primaryColor,
+            color: color ?? Theme.of(context).primaryColor,
             width: 2
           ),
           borderRadius: BorderRadius.circular(5)
@@ -31,7 +32,9 @@ class SecondaryButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: Theme.of(context).primaryTextTheme.headline4,
+            style: Theme.of(context).primaryTextTheme.headline4.apply(
+              color: color ?? Theme.of(context).primaryColor
+            ),
           ),
         ),
       ),

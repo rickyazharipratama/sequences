@@ -26,7 +26,6 @@ class LandingPagePresenter extends BasePresenter{
     playBackgroundMusic();
     view.updateState((){
       view.makeStatusReady();
-      checkMaintenance(view.currentContext());
     });
   }
 

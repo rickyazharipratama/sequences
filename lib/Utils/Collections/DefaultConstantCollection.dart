@@ -50,4 +50,7 @@ class DefaultConstantCollection{
 
   //dynamicLink
   String prefixDynamicLink = "https://sequences.page.link";
+  
+  //privacy policy
+  String privacyPolicyURL = "https://sequences-riddle.web.app/privacy-policy.html";
 }

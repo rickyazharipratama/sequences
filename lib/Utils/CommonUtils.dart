@@ -5,8 +5,10 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Views/Pages/WebPage.dart';
 import 'package:share/share.dart';
 import 'package:toast/toast.dart';
 
@@ -118,7 +120,12 @@ class CommonUtils{
       }
       Navigator.of(context).pop(0);
     }else if(choice == SettingList.privacyPolicy){
-      //should direct in to browser
+      Navigatorium.instance.pushWithNoAnimate(
+        context, 
+        child: WebPage(
+          title: "Privacy Policy",
+          url: DefaultConstantCollection.instance.privacyPolicyURL)
+      );
     }
   }
 

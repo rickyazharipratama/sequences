@@ -16,8 +16,13 @@ class SplashPagePresenter extends BasePresenter{
   @override
   void initiateData() {
     super.initiateData();
-    //view.loadingSplash(checkForUpdate);
-    view.goToLandingPage();
+    view.updateState(() {
+      view.makeReadyState();
+      view.loadingSplash(() {
+        checkMaintenance(view.currentContext());
+        view.goToLandingPage();
+      });
+    });
   }
   
   checkForUpdate() async{

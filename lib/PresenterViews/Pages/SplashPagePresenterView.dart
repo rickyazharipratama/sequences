@@ -4,10 +4,13 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
+import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Views/Pages/LandingPage.dart';
 
 class SplashPagePresenterView implements BasePresenterView{
 
+  
+  PageStatus state = PageStatus.initiating;
 
   @override
   BuildContext currentContext() {
@@ -28,6 +31,10 @@ class SplashPagePresenterView implements BasePresenterView{
   }
 
   makeReadyState(){
+  }
+
+  makeStateReady(){
+    state = PageStatus.ready;
   }
 
   goToLandingPage(){

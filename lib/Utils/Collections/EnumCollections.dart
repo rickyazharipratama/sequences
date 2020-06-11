@@ -1,7 +1,8 @@
 enum PageStatus{
   initiating,
   loading,
-  ready
+  ready,
+  error
 }
 
 enum KeyboardAction{

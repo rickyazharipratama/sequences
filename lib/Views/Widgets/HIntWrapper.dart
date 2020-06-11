@@ -4,6 +4,7 @@ import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/LineSeparator.dart';
 import 'package:sequences/Views/Components/SecondaryButton.dart';
+import 'package:sequences/Views/Widgets/SecondaryButtonWithLoading.dart';
 
 class HintWrapper extends StatelessWidget {
 
@@ -147,9 +148,7 @@ class HintWrapper extends StatelessWidget {
               horizontal: 20,
               vertical: 0,
             ),
-            child: SecondaryButton(
-              text: "Share it",
-              color: Theme.of(context).focusColor,
+            child: SecondaryButtonWithLoading(
               callback: () async{
                 //should be generate dynamic link
                 print("clicked");
@@ -157,13 +156,15 @@ class HintWrapper extends StatelessWidget {
                 if(hintWrap < 2)
                   desc+="\n\nFormula : "+hintSource.sequence.formula;
       
-                CommonUtils.instance.shareHelptoOthers(context,
+                await CommonUtils.instance.shareHelptoOthers(context,
                   link: await CommonUtils.instance.generateHelpDynamicLink(),
                   subject: "Can you solve it!",
                   desc: desc
                 );
-              },
-            ),
+              }, 
+              title: "Share it", 
+              color: Theme.of(context).focusColor
+            )
           )
         ],
       ),

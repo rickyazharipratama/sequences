@@ -4,8 +4,6 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'package:sequences/Models/RX/VirtualKeyboardModel.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
-import 'package:sequences/Views/SequencesApp.dart';
-import 'package:sequences/Views/Widgets/ShareToYourFriend.dart';
 
 class HintActionButton extends StatelessWidget {
 

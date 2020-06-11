@@ -178,10 +178,10 @@ class CommonUtils{
     return result;
   }
 
-  shareHelptoOthers(BuildContext context,{String subject, Uri link,String desc}){
+  Future<void> shareHelptoOthers(BuildContext context,{String subject, Uri link,String desc}) async{
     String dsc = desc+"\n\n"+link.toString();
     RenderBox box = context.findRenderObject();
-    Share.share(
+    await Share.share(
       dsc,
       subject: link.toString(),
       sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
@@ -189,9 +189,12 @@ class CommonUtils{
   }
 
   Future<Uri> getIconUrlFromFirebaseStorage() async{
-    StorageReference ref =  FirebaseStorage.instance.ref().child("ic_launcher_sequence.png");
-    print("icon name : "+ await ref.getName());
-    print("url name : "+ (await ref.getDownloadURL()).toString());
-    return null;
+    try{
+      StorageReference ref =  FirebaseStorage.instance.ref().child("ic_launcher_sequence.png");
+      return await ref.getDownloadURL();
+    }catch(exception){
+      print("image share error : "+exception.toString());
+      return null;
+    }
   }
 }

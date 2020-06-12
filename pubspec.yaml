@@ -26,6 +26,7 @@ dependencies:
   firebase_storage: ^3.1.6
   share: ^0.6.4+3
   flutter_webview_plugin: ^0.3.11
+  dio: ^3.0.9
   
 dev_dependencies:
   flutter_test:

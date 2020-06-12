@@ -56,7 +56,7 @@ class StagesPagePresenterView implements BasePresenterView{
         }else if(event == AdmobAdEvent.failedToLoad){
           Timer(
             Duration(
-              milliseconds: 2500
+              milliseconds: 1000
             ),
             () async{
               int retry = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.tryLoadRewardAds, error: -1);
@@ -124,7 +124,8 @@ class StagesPagePresenterView implements BasePresenterView{
     String desc
   }){
     showModalBottomSheet(
-      context: currentContext(), 
+      context: currentContext(),
+      isDismissible: false,
       builder: (context) => ShareToYourFriend(
         desc: desc,
       ),

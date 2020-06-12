@@ -145,37 +145,44 @@ class CommonUtils{
      return rc;
   }
 
-  Future<Uri> generateHelpDynamicLink() async{
-    DynamicLinkParameters params = DynamicLinkParameters(
-      uriPrefix: DefaultConstantCollection.instance.prefixDynamicLink,
-      link: Uri.parse(DefaultConstantCollection.instance.prefixDynamicLink),
-      androidParameters: AndroidParameters(
-        packageName: "std.coret.sequences",
-        minimumVersion: 16,
-      ),
-      googleAnalyticsParameters: GoogleAnalyticsParameters(
-        campaign: "Collaboration",
-        medium: "Apps",
-        source: "user"),
-      iosParameters: IosParameters(
-        bundleId: "std.coret.sequences",
-        minimumVersion: "1.0.0"
-      ),
-      socialMetaTagParameters: SocialMetaTagParameters(
-        imageUrl: await getIconUrlFromFirebaseStorage(),
-        title: "Can you solve it!",
-        description: "Help me to solve this riddle and find many interesting sequence riddles waiting to solve."
-      )
-    );
-    Uri result;
+  Future<Uri> generateHelpDynamicLink({
+    bool isGoodConnection
+  }) async{
     try{
-      ShortDynamicLink shortLink = await params.buildShortLink();
-      result = shortLink.shortUrl;
+      DynamicLinkParameters params = DynamicLinkParameters(
+        uriPrefix: DefaultConstantCollection.instance.prefixDynamicLink,
+        link: Uri.parse(DefaultConstantCollection.instance.prefixDynamicLink),
+        androidParameters: AndroidParameters(
+          packageName: "std.coret.sequences",
+          minimumVersion: 16,
+        ),
+        googleAnalyticsParameters: GoogleAnalyticsParameters(
+          campaign: "Collaboration",
+          medium: "Apps",
+          source: "user"),
+        iosParameters: IosParameters(
+          bundleId: "std.coret.sequences",
+          minimumVersion: "1.0.0"
+        ),
+        socialMetaTagParameters: SocialMetaTagParameters(
+          imageUrl: isGoodConnection ? await getIconUrlFromFirebaseStorage() : null,
+          title: "Can you solve it!",
+          description: "Help me to solve this riddle and find many interesting sequence riddles waiting to solve."
+        )
+      );
+      Uri result;
+      try{
+        ShortDynamicLink shortLink = await params.buildShortLink();
+        result = shortLink.shortUrl;
+      }catch(exception){
+        result = await params.buildUrl();
+        print(exception.toString());
+      }
+      return result;
     }catch(exception){
-      result = await params.buildUrl();
-      print(exception.toString());
+      print("error generate dynamic link : "+exception.toString());
+      return null;
     }
-    return result;
   }
 
   Future<void> shareHelptoOthers(BuildContext context,{String subject, Uri link,String desc}) async{
@@ -191,7 +198,7 @@ class CommonUtils{
   Future<Uri> getIconUrlFromFirebaseStorage() async{
     try{
       StorageReference ref =  FirebaseStorage.instance.ref().child("ic_launcher_sequence.png");
-      return await ref.getDownloadURL();
+      return Uri.parse((await ref.getDownloadURL()).toString());
     }catch(exception){
       print("image share error : "+exception.toString());
       return null;

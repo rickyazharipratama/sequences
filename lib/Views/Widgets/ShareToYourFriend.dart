@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
+import 'package:sequences/Utils/Helpers/NetworkHelper.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Widgets/SecondaryButtonWithLoading.dart';
 
@@ -9,8 +10,11 @@ class ShareToYourFriend extends StatelessWidget {
 
   ShareToYourFriend({@required this.desc});
 
+  
+
   @override
   Widget build(BuildContext context) {
+    bool isStillActive = true;
     return Container(
       padding: EdgeInsets.fromLTRB(
         10,
@@ -32,7 +36,10 @@ class ShareToYourFriend extends StatelessWidget {
               ),
               ImageButton(
                 image: "assets/images/close.png",
-                callback: (){Navigator.of(context, rootNavigator: true).pop();},
+                callback: (){
+                  isStillActive = false;
+                  Navigator.of(context, rootNavigator: true).pop();
+                },
                 color: Theme.of(context).focusColor,
                 size: 25,
               ),
@@ -98,14 +105,19 @@ class ShareToYourFriend extends StatelessWidget {
             child: SecondaryButtonWithLoading(
               callback: () async{
                 //should be generate dynamic link
-                print("clicked");
-
-                await CommonUtils.instance.shareHelptoOthers(context,
-                  link: await CommonUtils.instance.generateHelpDynamicLink(),
-                  subject: "Can you solve it!",
-                  desc: desc
+                bool isHaveGoodConnection =  await NetworkHelper.instance.checkExternalRequest();
+                Uri dynamicLink = await CommonUtils.instance.generateHelpDynamicLink(
+                  isGoodConnection: isHaveGoodConnection
                 );
-                print("executed");
+                if(dynamicLink != null){
+                  if(isStillActive){
+                    await CommonUtils.instance.shareHelptoOthers(context,
+                      link: dynamicLink,
+                      subject: "Can you solve it!",
+                      desc: desc
+                    );
+                  }
+                }
               }, 
               title: "Share it", 
               color: Theme.of(context).focusColor

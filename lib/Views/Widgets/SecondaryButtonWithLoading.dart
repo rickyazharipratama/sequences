@@ -18,6 +18,7 @@ class SecondaryButtonWithLoading extends StatefulWidget {
 
 class _SecondaryButtonWithLoadingState extends State<SecondaryButtonWithLoading> with SecondaryButtonWithLoadingPresenterView {
 
+
   @override
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
@@ -29,7 +30,9 @@ class _SecondaryButtonWithLoadingState extends State<SecondaryButtonWithLoading>
           print("starting loading");
           await hookCallback();
           print("finishin loading");
-          makeReady();
+          if(isActive){
+            makeReady();
+          }
         },
       ),
       secondChild: SecondaryLoadingButton(
@@ -55,5 +58,11 @@ class _SecondaryButtonWithLoadingState extends State<SecondaryButtonWithLoading>
   void updateState(callback) {
     super.updateState(callback);
     setState(callback);
+  }
+
+  @override
+  void dispose() {
+    isActive = false;
+    super.dispose();
   }
 }

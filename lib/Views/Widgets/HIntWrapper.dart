@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/Models/RX/QuestionRxModel.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
+import 'package:sequences/Utils/Helpers/NetworkHelper.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/LineSeparator.dart';
-import 'package:sequences/Views/Components/SecondaryButton.dart';
 import 'package:sequences/Views/Widgets/SecondaryButtonWithLoading.dart';
 
 class HintWrapper extends StatelessWidget {
@@ -18,6 +18,7 @@ class HintWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isStillActive = true;
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -48,7 +49,10 @@ class HintWrapper extends StatelessWidget {
               ),
               ImageButton(
                 image: "assets/images/close.png",
-                callback: (){Navigator.of(context, rootNavigator: true).pop();},
+                callback: (){
+                  isStillActive = false;
+                  Navigator.of(context, rootNavigator: true).pop();
+                },
                 color: Theme.of(context).focusColor,
                 size: 25,
               ),
@@ -150,17 +154,23 @@ class HintWrapper extends StatelessWidget {
             ),
             child: SecondaryButtonWithLoading(
               callback: () async{
-                //should be generate dynamic link
-                print("clicked");
+                //should be generate dynamic lin
                 String desc = "The Sequence is : "+hintSource.sequence.question+"\n\nFirst hint : "+hintSource.sequence.firstHint;
                 if(hintWrap < 2)
                   desc+="\n\nFormula : "+hintSource.sequence.formula;
-      
-                await CommonUtils.instance.shareHelptoOthers(context,
-                  link: await CommonUtils.instance.generateHelpDynamicLink(),
-                  subject: "Can you solve it!",
-                  desc: desc
+                bool isHaveGoodConnection =  await NetworkHelper.instance.checkExternalRequest();
+                Uri dynamicLink = await CommonUtils.instance.generateHelpDynamicLink(
+                  isGoodConnection: isHaveGoodConnection
                 );
+                if(dynamicLink != null){
+                  if(isStillActive){
+                    await CommonUtils.instance.shareHelptoOthers(context,
+                      link: dynamicLink,
+                      subject: "Can you solve it!",
+                      desc: desc
+                    );
+                  }
+                }
               }, 
               title: "Share it", 
               color: Theme.of(context).focusColor

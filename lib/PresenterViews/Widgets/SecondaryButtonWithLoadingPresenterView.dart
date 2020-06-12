@@ -5,6 +5,7 @@ import 'package:sequences/Utils/Collections/EnumCollections.dart';
 class SecondaryButtonWithLoadingPresenterView implements BasePresenterView{
 
   PageStatus state = PageStatus.ready;
+  bool isActive = true;
 
   @override
   BuildContext currentContext() {

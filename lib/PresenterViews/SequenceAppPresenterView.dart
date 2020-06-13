@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/CommonUtils.dart';
@@ -21,6 +22,7 @@ class SequenceAppPresenterView implements BasePresenterView{
 
   Widget mainWidget(bool isDarkTheme){
     CommonUtils.instance.preferablePortraitMode();
+    setStatusAndNavigation(isDarkTheme);
     print("using d.theme => "+isDarkTheme.toString());
     if(state == PageStatus.ready){
       return MaterialApp(
@@ -33,5 +35,19 @@ class SequenceAppPresenterView implements BasePresenterView{
 
   void makeStateReady(){
     state = PageStatus.ready;
+  }
+
+  setStatusAndNavigation(bool darkTheme){
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarBrightness: darkTheme ? Brightness.dark : Brightness.light,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: darkTheme ? Brightness.light : Brightness.dark,
+        systemNavigationBarColor: darkTheme ? 
+          ThemeUtil.instance.darkTheme.backgroundColor
+          : ThemeUtil.instance.lightTheme.backgroundColor,
+        systemNavigationBarIconBrightness: darkTheme ? Brightness.light : Brightness.dark
+      )
+    );
   }
 }

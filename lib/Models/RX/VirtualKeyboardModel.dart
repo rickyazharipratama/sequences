@@ -45,7 +45,10 @@ abstract class _VirtualKeyboadModel with Store{
 
   @action
   void structurizeKeyPunched(String val){
-    keyPunched += val;
+    if(keyPunched.length < 10){
+      print("text length : "+keyPunched.length.toString());
+      keyPunched+=val;
+    }
   }
 
   @action

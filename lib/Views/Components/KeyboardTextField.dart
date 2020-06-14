@@ -44,6 +44,7 @@ class _KeyboardTextFieldState extends State<KeyboardTextField> with KeyboardText
         child: Observer(
           builder: (context) => RichText(
             textAlign: TextAlign.left,
+            maxLines: 1,
             text: TextSpan(
               text: widget.keys.keyPunched,
               style: Theme.of(context).primaryTextTheme.headline4

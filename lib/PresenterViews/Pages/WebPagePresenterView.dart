@@ -2,22 +2,27 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WebPagePresenterView implements BasePresenterView{
 
   FlutterWebviewPlugin wv;
   PageStatus state = PageStatus.loading;
-
   Rect webRect = Rect.fromLTWH(0, 0, 0, 0);
 
-  initiateWebview(String url){
-    wv = FlutterWebviewPlugin()
-    ..onStateChanged.listen(onWebStateChange)
-    ..onHttpError.listen(onWebError);
-    wv.launch(
-      url,
-      rect: webRect
-    );
+  initiateWebview(String url) async{
+    if(await canLaunch(url)){
+      wv = FlutterWebviewPlugin()
+      ..onStateChanged.listen(onWebStateChange);
+      wv.launch(
+        url,
+        rect: webRect
+      );
+    }else{
+      updateState(() {
+        state = PageStatus.error;
+      });
+    }
   }
 
   @override
@@ -39,13 +44,6 @@ class WebPagePresenterView implements BasePresenterView{
         state = PageStatus.loading;
       });
     }
-  }
-
-  onWebError(WebViewHttpError error){
-    wv.resize(Rect.fromLTWH(0, 0, 0, 0));
-    updateState(() {
-      state = PageStatus.error;
-    });
   }
 
   onRectChanged(Rect rct){

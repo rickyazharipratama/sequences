@@ -28,6 +28,7 @@ dependencies:
   share: ^0.6.4+3
   flutter_webview_plugin: ^0.3.11
   dio: ^3.0.9
+  url_launcher: ^5.4.10
   
 dev_dependencies:
   flutter_test:

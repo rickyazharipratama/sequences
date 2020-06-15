@@ -140,7 +140,7 @@ class CommonUtils{
        );
        await rc.activateFetched();
      }catch(exception){
-       print("error remote Config : "+ exception.toString());
+       CommonUtils.instance.showLog("error remote Config : "+ exception.toString());
      }
      return rc;
   }
@@ -176,11 +176,11 @@ class CommonUtils{
         result = shortLink.shortUrl;
       }catch(exception){
         result = await params.buildUrl();
-        print(exception.toString());
+        CommonUtils.instance.showLog(exception.toString());
       }
       return result;
     }catch(exception){
-      print("error generate dynamic link : "+exception.toString());
+      CommonUtils.instance.showLog("error generate dynamic link : "+exception.toString());
       return null;
     }
   }
@@ -200,8 +200,14 @@ class CommonUtils{
       StorageReference ref =  FirebaseStorage.instance.ref().child("ic_launcher_sequence.png");
       return Uri.parse((await ref.getDownloadURL()).toString());
     }catch(exception){
-      print("image share error : "+exception.toString());
+      CommonUtils.instance.showLog("image share error : "+exception.toString());
       return null;
+    }
+  }
+
+  showLog(String log){
+    if(DefaultConstantCollection.instance.environment == FlavorEnvironment.debug){
+      print(log);
     }
   }
 }

@@ -16,7 +16,7 @@ class KeyboardNumberButton extends StatelessWidget {
     return Observer(
       builder: (_){
         bool isHasBeenDisabled = keys.blockNumberKey.contains(label);
-        print("Key : "+label+" is disabled "+isHasBeenDisabled.toString()+", keys is "+keys.blockNumberKey.join(","));
+        CommonUtils.instance.showLog("Key : "+label+" is disabled "+isHasBeenDisabled.toString()+", keys is "+keys.blockNumberKey.join(","));
         return GestureDetector(
           onTap: (){
             if(!isHasBeenDisabled){

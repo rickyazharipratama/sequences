@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 part 'VirtualKeyboardModel.g.dart';
 
@@ -46,7 +47,7 @@ abstract class _VirtualKeyboadModel with Store{
   @action
   void structurizeKeyPunched(String val){
     if(keyPunched.length < 10){
-      print("text length : "+keyPunched.length.toString());
+      CommonUtils.instance.showLog("text length : "+keyPunched.length.toString());
       keyPunched+=val;
     }
   }

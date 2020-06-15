@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:sequences/PresenterViews/Components/CheckBoxActionPresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class CheckBoxActionPresenter extends BasePresenter{
 
@@ -20,7 +21,7 @@ class CheckBoxActionPresenter extends BasePresenter{
   void initiateData() async{
     super.initiateData();
     setCheck = isChecked;
-    print("is Checked  :" + isChecked.toString());
+    CommonUtils.instance.showLog("is Checked  :" + isChecked.toString());
     view.updateState(view.makeStatusReady);
   }
 

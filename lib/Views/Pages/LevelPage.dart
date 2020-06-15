@@ -49,7 +49,7 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                     ),
                     child: ImageButton(
                       callback: () async{
-                        print("show setting dialog");
+                        CommonUtils.instance.showLog("show setting dialog");
                         SettingList res = await showModalBottomSheet(
                           context: context, 
                           builder: (context) => Settings(
@@ -81,7 +81,7 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
                        children: List.generate(diff, (index){
                          int part = start + index + 1;
-                         print("part : "+part.toString()+", current stage: "+presenter.stages.currentStage.toString());
+                         CommonUtils.instance.showLog("part : "+part.toString()+", current stage: "+presenter.stages.currentStage.toString());
                          return Level(
                            label: "Level "+(part).toString(),
                            openState: presenter.stages.currentStage  == part?

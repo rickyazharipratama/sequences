@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class SequenceQuestionFieldPresenterView implements BasePresenterView{
 
@@ -22,7 +23,7 @@ class SequenceQuestionFieldPresenterView implements BasePresenterView{
       }else{
         animationReversing();
       }
-      print("animation value : "+anim.value.toString()+"Animating : "+animatePadding.toString());
+      CommonUtils.instance.showLog("animation value : "+anim.value.toString()+"Animating : "+animatePadding.toString());
       updateState(() { });
     });
   }

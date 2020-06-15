@@ -2,6 +2,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Utils/Helpers/AnalyticHelper.dart';
 import 'package:sequences/Views/Pages/Maintenance.dart';
 
@@ -25,10 +26,10 @@ abstract class BasePresenter{
 
   void checkMaintenance(BuildContext context){
     bool isMaintenance = false;
-    print("is it maintenance?");
+    CommonUtils.instance.showLog("is it maintenance?");
     if(rc != null){
       isMaintenance = rc.getBool(DefaultConstantCollection.instance.isMaintenance);
-      print("it is in Maintenance Mode");
+      CommonUtils.instance.showLog("it is in Maintenance Mode");
       if(isMaintenance){
         Navigatorium.instance.newRoute(context, 
           child: Maintenance()

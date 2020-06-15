@@ -133,7 +133,7 @@ class StagesPagePresenter extends BasePresenter{
       //wrong answer
       unCorrectAnswer++;
       shakerSink.add(true);
-      print("wrong answer");
+      CommonUtils.instance.showLog("wrong answer");
     }
   }
 
@@ -163,7 +163,7 @@ class StagesPagePresenter extends BasePresenter{
       }
     }
     keys.addAllBlockNumberKeys(blockedkeys);
-    print(keys.blockNumberKey.join(",").toString());
+    CommonUtils.instance.showLog(keys.blockNumberKey.join(",").toString());
   }
 
 
@@ -173,7 +173,7 @@ class StagesPagePresenter extends BasePresenter{
         phase: stages.hintCounter,
         source: seq
       );
-      print("hint counter : "+stages.hintCounter.toString());
+      CommonUtils.instance.showLog("hint counter : "+stages.hintCounter.toString());
       if(stages.hintCounter == 2){
         blockNumberKey();
       }

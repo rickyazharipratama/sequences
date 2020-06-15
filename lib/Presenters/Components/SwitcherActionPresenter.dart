@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Components/SwitcherActionPresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class SwitcherActionPresenter extends BasePresenter{
 
@@ -23,7 +24,7 @@ class SwitcherActionPresenter extends BasePresenter{
 
   onChangeSwitcher(bool val){
     isVal = val;
-    print("switcher :"+isVal.toString());
+    CommonUtils.instance.showLog("switcher :"+isVal.toString());
     sinker.add(val);
     view.updateState((){});
   }

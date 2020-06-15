@@ -23,7 +23,7 @@ class SequenceAppPresenterView implements BasePresenterView{
   Widget mainWidget(bool isDarkTheme){
     CommonUtils.instance.preferablePortraitMode();
     setStatusAndNavigation(isDarkTheme);
-    print("using d.theme => "+isDarkTheme.toString());
+    CommonUtils.instance.showLog("using d.theme => "+isDarkTheme.toString());
     if(state == PageStatus.ready){
       return MaterialApp(
         home: SplashPage(),

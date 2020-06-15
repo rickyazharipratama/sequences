@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Widgets/SecondaryButtonWithLoadingPresenterView.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Views/Components/SecondaryButton.dart';
 import 'package:sequences/Views/Components/SecondaryLoadingButton.dart';
 
@@ -27,9 +28,9 @@ class _SecondaryButtonWithLoadingState extends State<SecondaryButtonWithLoading>
         color: widget.color,
         callback: () async{
           startLoading();
-          print("starting loading");
+          CommonUtils.instance.showLog("starting loading");
           await hookCallback();
-          print("finishin loading");
+          CommonUtils.instance.showLog("finishin loading");
           if(isActive){
             makeReady();
           }

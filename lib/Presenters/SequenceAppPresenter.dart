@@ -6,6 +6,7 @@ import 'package:sequences/PresenterViews/SequenceAppPresenterView.dart';
 import 'package:sequences/Presenters/Base/BasePresenter.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Utils/Collections/SharedPreferencesConstantCollection.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Utils/Helpers/SharedPreferenceHelper.dart';
 
 class SequenceAppPresenter extends BasePresenter{
@@ -31,7 +32,7 @@ class SequenceAppPresenter extends BasePresenter{
       mode: PlayerMode.MEDIA_PLAYER
     )..setVolume(.35)
     ..onPlayerStateChanged.listen((event) {
-      print("music audio state : "+ event.toString());
+      CommonUtils.instance.showLog("music audio state : "+ event.toString());
       musicState = event;
     });
 
@@ -102,7 +103,7 @@ class SequenceAppPresenter extends BasePresenter{
     if(sounds.isMusicActive){
       if(musicState == AudioPlayerState.PAUSED){
         int pos = await SharedPreferenceHelper.instance.getInt(SharedPreferencesConstantCollection.instance.musicPosition , error: -1);
-        print("music cursor pos : "+ pos.toString());
+        CommonUtils.instance.showLog("music cursor pos : "+ pos.toString());
         if(pos > 0){
           await musicSounds.fixedPlayer.seek(Duration(milliseconds: pos));
        
@@ -117,14 +118,14 @@ class SequenceAppPresenter extends BasePresenter{
   void pauseMusicSound() async{
     if(sounds.isMusicActive){
       int pos = await musicSounds.fixedPlayer.getCurrentPosition();
-      print("music pasu in pos : "+pos.toString());
+      CommonUtils.instance.showLog("music pasu in pos : "+pos.toString());
       (await SharedPreferenceHelper.instance.pref()).setInt(SharedPreferencesConstantCollection.instance.musicPosition, pos);
       await musicSounds.fixedPlayer.pause();
     }
   }
 
   void stopMusicSound() async{
-    print("stopping musing");
+    CommonUtils.instance.showLog("stopping musing");
     await musicSounds.fixedPlayer.stop();
   }
 

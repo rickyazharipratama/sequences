@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class NetworkHelper{
 
@@ -21,7 +22,7 @@ class NetworkHelper{
         return true;
       }
     }catch(e){
-      print("network error : "+e.toString());
+      CommonUtils.instance.showLog("network error : "+e.toString());
       return false;
     }
     return false;

@@ -32,16 +32,16 @@ class StagesPagePresenterView implements BasePresenterView{
     admobReward = AdmobReward(
       adUnitId: CommonUtils.instance.getAdmobRewardId(),
       listener: (AdmobAdEvent event, Map<String,dynamic> arg) async{
-        print("Reward admob event : "+event.toString());
-        print("Reward admob args : "+arg.toString());
+        CommonUtils.instance.showLog("Reward admob event : "+event.toString());
+        CommonUtils.instance.showLog("Reward admob args : "+arg.toString());
         if(event == AdmobAdEvent.rewarded){
           int val = -1;
           if(arg['amount'] != null){
-            print("amount : "+arg['amount'].toString());
+            CommonUtils.instance.showLog("amount : "+arg['amount'].toString());
             //val = int.parse(arg['amount'].toString());
             val = 1;
           }
-          print("reward admob type : "+arg['type'].toString()+", value : "+val.toString());
+          CommonUtils.instance.showLog("reward admob type : "+arg['type'].toString()+", value : "+val.toString());
           rewardCallback(val);
         }else if(event == AdmobAdEvent.closed){
           admobReward = null;

@@ -28,10 +28,10 @@ class MaintenancePresenter extends BasePresenter{
       () async{
           rc = await CommonUtils.instance.initiateRemoteConfig();
           bool isMaintenance = true;
-          print("check is Maintenance is over ?");
+          CommonUtils.instance.showLog("check is Maintenance is over ?");
           if(rc != null){
             isMaintenance = rc.getBool(DefaultConstantCollection.instance.isMaintenance);
-            print("maintenance is over");
+            CommonUtils.instance.showLog("maintenance is over");
             if(!isMaintenance){
               view.backtoLandingPage();
             }

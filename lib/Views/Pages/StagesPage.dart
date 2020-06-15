@@ -71,7 +71,7 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
                                 adSize: AdmobBannerSize.BANNER,
                                 adUnitId: CommonUtils.instance.getAdmobBannerId(),
                                 listener: (event,__){
-                                  print("banner admob event : "+event.toString());
+                                  CommonUtils.instance.showLog("banner admob event : "+event.toString());
                                 },
                                 
                               )
@@ -85,7 +85,7 @@ class _StagesPageState extends State<StagesPage> with StagesPagePresenterView{
 
                             ImageButton(
                               callback: () async{
-                                print("show setting dialog");
+                                CommonUtils.instance.showLog("show setting dialog");
                                 SettingList res = await showModalBottomSheet(
                                   context: context, 
                                   builder: (context) => Settings(

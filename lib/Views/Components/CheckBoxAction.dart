@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Components/CheckBoxActionPresenterView.dart';
 import 'package:sequences/Presenters/Components/CheckBoxActionPresenter.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class CheckBoxAction extends StatefulWidget {
 
@@ -33,7 +34,7 @@ class _CheckBoxActionState extends State<CheckBoxAction> with CheckBoxActionPres
     return GestureDetector(
       onTap: (){
         if(state == PageStatus.ready){
-          print("Change from label");
+          CommonUtils.instance.showLog("Change from label");
           presenter.oncheckedChange(!presenter.isCheck);
         }
       },

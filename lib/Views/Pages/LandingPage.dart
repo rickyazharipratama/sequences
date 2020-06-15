@@ -69,7 +69,7 @@ class _LandingPageState extends State<LandingPage> with LandingPagePresenterView
                   right: 10,
                   child: ImageButton(
                     callback: () async{
-                      print("show setting dialog");
+                      CommonUtils.instance.showLog("show setting dialog");
                       SettingList res = await  showModalBottomSheet(
                         context: context, 
                         builder: (context) => Settings());

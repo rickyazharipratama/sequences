@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Components/SwitcherActionPresenterView.dart';
 import 'package:sequences/Presenters/Components/SwitcherActionPresenter.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class SwitcherAction extends StatefulWidget {
 
@@ -24,7 +25,7 @@ class _SwitcherActionState extends State<SwitcherAction> with SwitcherActionPres
   @override
   void initState() {
     super.initState();
-    print("switcher + "+widget.label+" is "+widget.firstValue.toString());
+    CommonUtils.instance.showLog("switcher + "+widget.label+" is "+widget.firstValue.toString());
     presenter = SwitcherActionPresenter(view: this, sinker: widget.sinker, firstVal: widget.firstValue)
     ..initiateData();
   }

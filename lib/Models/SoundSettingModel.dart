@@ -1,4 +1,5 @@
 import 'package:sequences/Utils/Collections/SharedPreferencesConstantCollection.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 import 'package:sequences/Utils/Helpers/SharedPreferenceHelper.dart';
 
 class SoundSettingModel{
@@ -22,13 +23,13 @@ class SoundSettingModel{
 
   saveSoundSetting(bool val) async{
     _isSoundActive = val;
-    print("sound before store =>"+_isSoundActive.toString());
+    CommonUtils.instance.showLog("sound before store =>"+_isSoundActive.toString());
     (await SharedPreferenceHelper.instance.pref()).setBool(SharedPreferencesConstantCollection.instance.isSoundActive, _isSoundActive);
   }
   
   saveMusicSetting(bool val) async{
     _isMusicActive = val;
-    print("music before store =>"+_isMusicActive.toString());
+    CommonUtils.instance.showLog("music before store =>"+_isMusicActive.toString());
     (await SharedPreferenceHelper.instance.pref()).setBool(SharedPreferencesConstantCollection.instance.isMusicActive, _isMusicActive);
   }
 }

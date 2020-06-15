@@ -37,7 +37,7 @@ class LandingPagePresenter extends BasePresenter{
   Future<void> goToStage() async{
     SequencesApp.of(view.currentContext()).presenter.stopMusicSound();
     await view.gotoStages();
-    print("back from stage");
+    CommonUtils.instance.showLog("back from stage");
     playBackgroundMusic();
     await currentStages.retrieveCurrentStage();
     view.updateState(() { });
@@ -55,7 +55,7 @@ class LandingPagePresenter extends BasePresenter{
   levelSelect() async{
     view.goToLevelSelect(
        selectedListener: (){
-         print("on selected listener");
+         CommonUtils.instance.showLog("on selected listener");
          SequencesApp.of(view.currentContext()).presenter.stopMusicSound();
        },
        returnStage: () async{

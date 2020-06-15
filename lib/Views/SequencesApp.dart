@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/SequenceAppPresenterView.dart';
 import 'package:sequences/Presenters/SequenceAppPresenter.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class SequencesApp extends StatefulWidget {
 
@@ -29,7 +30,7 @@ class _SequencesAppState extends State<SequencesApp> with WidgetsBindingObserver
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    print("app state : "+state.toString());
+    CommonUtils.instance.showLog("app state : "+state.toString());
     if(state == AppLifecycleState.resumed){
       presenter.resumeMusicSound();
     }else if(state == AppLifecycleState.paused || state == AppLifecycleState.inactive){

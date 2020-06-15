@@ -33,7 +33,7 @@ class KeyboardActionButton extends StatelessWidget {
         if(action == KeyboardAction.erase && keys.keyPunched.length > 0){
           SequencesApp.of(context).presenter.playCoBell();
           isLongPressActive = true;
-          print("long Press start");
+          CommonUtils.instance.showLog("long Press start");
         }
       },
       onLongPress: (){
@@ -52,7 +52,7 @@ class KeyboardActionButton extends StatelessWidget {
         }
       },
       onLongPressEnd: (detail){
-        print("long press end");
+        CommonUtils.instance.showLog("long press end");
         if(timer != null){
           if(timer.isActive){
             timer.cancel();

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Widgets/ThirdPartyLicensePresenterView.dart';
+import 'package:sequences/Views/Components/LineSeparator.dart';
 import 'package:sequences/Views/Components/PluginListItem.dart';
+import 'package:sequences/Views/Components/SoftwareLinkList.dart';
 
 class ThirdPartyLicense extends StatefulWidget {
 
@@ -18,6 +20,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
   @override
   void initState() {
     super.initState();
+    initiateScroll();
     initiateAnimation(this);
   }
 
@@ -36,6 +39,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                 top: MediaQuery.of(context).padding.top + 50,
               ),
               child: ListView(
+                controller: scrollController,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
@@ -65,12 +69,267 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     child: RichText(
                       text: TextSpan(
                         style: Theme.of(context).primaryTextTheme.bodyText2,
-                        text: "Big thanks for Several cool of free and open-source flutter plugin softwares, it's really helped to make sequences run with proud. Below, you can see all software have been using and/or terms of the licenses."
+                        text: "Big thanks for Several cool of free and open-source flutter plugin softwares, it's really helped to make sequences run with proud. You can see all software have been using and/or terms of the licenses below."
                       ),
                     ),
                   ),
 
                   Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(747);
+                      }, 
+                      title: "Flutter"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(1692);
+                      }, 
+                      title: "Shared preferences plugin"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(2670);
+                      }, 
+                      title: "Navigatorium"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(2755);
+                      }, 
+                      title: "In App Update"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(3427);
+                      }, 
+                      title: "Firebase Analytic"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(4254);
+                      }, 
+                      title: "Firebase Remote Config"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(5074);
+                      }, 
+                      title: "Firebase Crashlytic"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(5910);
+                      }, 
+                      title: "Firebase Dynamic Link"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(6978);
+                      }, 
+                      title: "Firebase Storage"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(7808);
+                      }, 
+                      title: "Firebase Performance"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(8638);
+                      }, 
+                      title: "Flutter MobX"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(9325);
+                      }, 
+                      title: "Admob Flutter"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(9937);
+                      }, 
+                      title: "Toast"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(10565);
+                      }, 
+                      title: "Loading Indicator"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(15089);
+                      }, 
+                      title: "Audioplayers"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(15775);
+                      }, 
+                      title: "Share"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(16630);
+                      }, 
+                      title: "Flutter Webview Plugin"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(17450);
+                      }, 
+                      title: "Dio"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0
+                    ),
+                    child: SoftwareLinkList(
+                      action: (){
+                        goToWidget(18153);
+                      }, 
+                      title: "URL Launcher"
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 5,
+                    ),
+                    child: LineSeparator(),
+                  ),
+                  Padding(
+                    key: flutterKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -84,6 +343,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: sharedPreferencePluginKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -97,9 +357,10 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: navigatoriumKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
-                      vertical: 10
+                      vertical: 0
                     ),
                     child: PluginListItem(
                       title: "navigatorium",
@@ -108,6 +369,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: inAppUpdateKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -120,7 +382,9 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                   ),
 
+
                   Padding(
+                    key: firebaseAnalyticKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -134,6 +398,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: firebaseRemoteConfigKey,
                     padding:  EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -147,6 +412,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: firebaseCrashlyticKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -159,6 +425,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: firebaseDynamicLinkKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -172,6 +439,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: firebaseStorageKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -185,6 +453,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: firebasePerformanceKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -198,6 +467,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: flutterMobxKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10,
@@ -211,6 +481,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: admobFlutterKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -224,6 +495,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: toastKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -237,6 +509,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: loadingIndicatorKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -250,6 +523,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: audioPlayersKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10,
@@ -263,6 +537,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: shareKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -276,6 +551,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: flutterWebviewPluginKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -289,6 +565,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: dioKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -302,6 +579,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                   ),
 
                   Padding(
+                    key: urlLauncherKey,
                     padding: EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10
@@ -341,8 +619,48 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                 ),
               ),
             ),
-          )
+          ),
 
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: MediaQuery.of(context).padding.bottom + 5,
+            child: Center(
+              child: isBackToTheTopActive ?
+                GestureDetector(
+                  onTap: (){
+                    goToWidget(0);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Theme.of(context).primaryTextTheme.bodyText2.color,
+                          blurRadius: 2,
+                          spreadRadius: 0.5,
+                          offset: Offset(0,.25)
+                        )
+                      ]
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Back to the top",
+                        style: Theme.of(context).primaryTextTheme.bodyText2.apply(
+                          color: Theme.of(context).focusColor
+                        )
+                      ),
+                    ),
+                  ),
+                )
+              :Container(),
+            )
+          )
         ],
       ),
     );

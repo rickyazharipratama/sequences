@@ -188,10 +188,9 @@ class StagesPagePresenter extends BasePresenter{
     if(keys.hintState == HintState.ready){
       keys.structurizeKeyAction(KeyboardAction.hint);
     }else if(keys.hintState == HintState.failed){
-      String desc = "The Sequence is : "+seq.sequence.question+"\n\nFirst hint : "+seq.sequence.firstHint;
-      if(stages.hintCounter < 2)
-        desc+="\n\nFormula : "+seq.sequence.formula;
+      String desc = "S∈Q riddle\n\nThe Sequence is : "+seq.sequence.question;
       
+      desc+="\n\nHelp me to solve this riddle and find many interesting sequence riddles waiting to solve.";
       view.goToShareToYourFriend(
         desc: desc
       );

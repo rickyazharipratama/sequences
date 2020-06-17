@@ -155,9 +155,10 @@ class HintWrapper extends StatelessWidget {
             child: SecondaryButtonWithLoading(
               callback: () async{
                 //should be generate dynamic lin
-                String desc = "The Sequence is : "+hintSource.sequence.question+"\n\nFirst hint : "+hintSource.sequence.firstHint;
+                String desc = "S∈Q riddle\n\nThe Sequence is : "+hintSource.sequence.question+"\n\nFirst hint : "+hintSource.sequence.firstHint;
                 if(hintWrap < 2)
                   desc+="\n\nFormula : "+hintSource.sequence.formula;
+                desc+="\n\nHelp me to solve this riddle and find many interesting sequence riddles waiting to solve.";
                 bool isHaveGoodConnection =  await NetworkHelper.instance.checkExternalRequest();
                 Uri dynamicLink = await CommonUtils.instance.generateHelpDynamicLink(
                   isGoodConnection: isHaveGoodConnection

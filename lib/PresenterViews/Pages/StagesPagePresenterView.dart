@@ -104,7 +104,8 @@ class StagesPagePresenterView implements BasePresenterView{
     int phase
   }) async{
     await showModalBottomSheet(
-      context: currentContext(), 
+      context: currentContext(),
+      isDismissible: false, 
       builder: (context){
         return HintWrapper(
           hintSource: source,

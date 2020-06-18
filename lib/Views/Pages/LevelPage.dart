@@ -90,8 +90,8 @@ class _LevelPageState extends State<LevelPage> with LevelPagePresenterView{
                               LevelIconSimbol.open
                               : LevelIconSimbol.closed,
                            callback: (){
-                              if(presenter.stages.currentStage + 1 >= part){
-                                Navigator.of(context).pop(part + 1);
+                              if(presenter.stages.currentStage >= part){
+                                Navigator.of(context).pop(part);
                               }
                            },
                          );

@@ -81,7 +81,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(747);
+                        goToWidget(flutterKey);
                       }, 
                       title: "Flutter"
                     ),
@@ -94,7 +94,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(1692);
+                        goToWidget(sharedPreferencePluginKey);
                       }, 
                       title: "Shared preferences plugin"
                     ),
@@ -107,7 +107,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(2670);
+                        goToWidget(navigatoriumKey);
                       }, 
                       title: "Navigatorium"
                     ),
@@ -120,7 +120,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(2755);
+                        goToWidget(inAppUpdateKey);
                       }, 
                       title: "In App Update"
                     ),
@@ -133,7 +133,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(3427);
+                        goToWidget(firebaseAnalyticKey);
                       }, 
                       title: "Firebase Analytic"
                     ),
@@ -146,7 +146,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(4254);
+                        goToWidget(firebaseRemoteConfigKey);
                       }, 
                       title: "Firebase Remote Config"
                     ),
@@ -159,7 +159,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(5074);
+                        goToWidget(firebaseCrashlyticKey);
                       }, 
                       title: "Firebase Crashlytic"
                     ),
@@ -172,7 +172,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(5910);
+                        goToWidget(firebaseDynamicLinkKey);
                       }, 
                       title: "Firebase Dynamic Link"
                     ),
@@ -185,7 +185,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(6978);
+                        goToWidget(firebaseStorageKey);
                       }, 
                       title: "Firebase Storage"
                     ),
@@ -198,7 +198,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(7808);
+                        goToWidget(firebasePerformanceKey);
                       }, 
                       title: "Firebase Performance"
                     ),
@@ -211,7 +211,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(8638);
+                        goToWidget(flutterMobxKey);
                       }, 
                       title: "Flutter MobX"
                     ),
@@ -224,7 +224,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(9325);
+                        goToWidget(admobFlutterKey);
                       }, 
                       title: "Admob Flutter"
                     ),
@@ -237,7 +237,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(9937);
+                        goToWidget(toastKey);
                       }, 
                       title: "Toast"
                     ),
@@ -250,7 +250,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(10565);
+                        goToWidget(loadingIndicatorKey);
                       }, 
                       title: "Loading Indicator"
                     ),
@@ -263,7 +263,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(15089);
+                        goToWidget(audioPlayersKey);
                       }, 
                       title: "Audioplayers"
                     ),
@@ -276,7 +276,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(15775);
+                        goToWidget(shareKey);
                       }, 
                       title: "Share"
                     ),
@@ -289,7 +289,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(16630);
+                        goToWidget(flutterWebviewPluginKey);
                       }, 
                       title: "Flutter Webview Plugin"
                     ),
@@ -302,7 +302,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(17450);
+                        goToWidget(dioKey);
                       }, 
                       title: "Dio"
                     ),
@@ -315,7 +315,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
                     ),
                     child: SoftwareLinkList(
                       action: (){
-                        goToWidget(18153);
+                        goToWidget(urlLauncherKey);
                       }, 
                       title: "URL Launcher"
                     ),
@@ -629,7 +629,7 @@ class _ThirdPartyLicenseState extends State<ThirdPartyLicense> with ThirdPartyLi
               child: isBackToTheTopActive ?
                 GestureDetector(
                   onTap: (){
-                    goToWidget(0);
+                    scrollToWidget(0);
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(

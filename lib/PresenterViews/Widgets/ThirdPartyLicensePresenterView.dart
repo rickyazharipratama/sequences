@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sequences/PresenterViews/Base/BasePresenterView.dart';
+import 'package:sequences/Utils/CommonUtils.dart';
 
 class ThirdPartyLicensePresenterView implements BasePresenterView{
 
@@ -30,7 +31,9 @@ class ThirdPartyLicensePresenterView implements BasePresenterView{
   bool isBackToTheTopActive = false;
 
   initiateScroll(){
-    scrollController = ScrollController()
+    scrollController = ScrollController(
+      keepScrollOffset: true,
+    )
     ..addListener(() {
       if(scrollController.offset > MediaQuery.of(currentContext()).size.height){
         if(!isBackToTheTopActive){
@@ -38,6 +41,10 @@ class ThirdPartyLicensePresenterView implements BasePresenterView{
             isBackToTheTopActive = true;
           });
         }
+        CommonUtils.instance.showLog("flutter key : "+flutterKey.currentContext.toString());
+        CommonUtils.instance.showLog("shared preference key : "+sharedPreferencePluginKey.currentContext.toString());
+        CommonUtils.instance.showLog("inAppUpdate : "+inAppUpdateKey.currentContext.toString());
+        CommonUtils.instance.showLog("firebase Remote key : "+firebaseRemoteConfigKey.currentContext.toString());
       }else{
         if(isBackToTheTopActive){
           updateState(() {
@@ -45,15 +52,48 @@ class ThirdPartyLicensePresenterView implements BasePresenterView{
           });
         }
       }
+      CommonUtils.instance.showLog("scroll offset : "+scrollController.offset.toString());
      });
   }
+  goToWidget(GlobalKey key) async{
 
-  goToWidget(double scroll) async{
-    scrollController.animateTo(
-      scroll, 
-      duration: Duration(milliseconds: 500), 
-      curve: Curves.ease
-    );
+    double currentOffset = scrollController.offset;
+    bool isEndScroll = false;
+    do{
+      if(currentOffset < scrollController.position.maxScrollExtent){
+        if(key.currentContext == null){
+          currentOffset += MediaQuery.of(currentContext()).size.height;
+          await scrollController.animateTo(
+            currentOffset,
+            duration: Duration(
+              milliseconds: 200
+            ), curve: Curves.linear);
+        }else{
+          double diff = (key.currentContext.findRenderObject() as RenderBox).localToGlobal(Offset.zero).dy * .75;
+          int durs = ((diff/MediaQuery.of(currentContext()).size.height) * 200).floor();
+          double offs = currentOffset + diff;
+          await scrollController.animateTo(
+            offs,
+            duration: Duration(
+              milliseconds: durs
+            ), 
+            curve: Curves.ease);
+            isEndScroll = true;
+        }
+      }else{
+        isEndScroll = true;
+      }
+    }while(!isEndScroll);
+  }
+
+  scrollToWidget(double offset) async{
+    int durs = ((scrollController.offset / MediaQuery.of(currentContext()).size.height) * 200).floor();
+    await scrollController.animateTo(
+      offset, 
+    duration: Duration(
+      milliseconds: durs
+    ),
+    curve: Curves.ease);
   }
 
   initiateAnimation(SingleTickerProviderStateMixin ticker){

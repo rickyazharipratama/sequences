@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:navigatorium/navigatorium.dart';
 import 'package:sequences/PresenterViews/Widgets/SettingsPresenterView.dart';
 import 'package:sequences/Presenters/SettingsPresenter.dart';
+import 'package:sequences/Utils/Collections/DefaultConstantCollection.dart';
 import 'package:sequences/Utils/Collections/EnumCollections.dart';
 import 'package:sequences/Views/Components/CheckBoxAction.dart';
 import 'package:sequences/Views/Components/ImageButton.dart';
 import 'package:sequences/Views/Components/ListButton.dart';
 import 'package:sequences/Views/Components/SwitcherAction.dart';
 import 'package:sequences/Views/Pages/AboutPage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatefulWidget {
 
@@ -88,6 +90,15 @@ class _SettingsState extends State<Settings> with SettingsPresenterView, SingleT
                 Navigator.of(context).pop(SettingList.privacyPolicy);
               },
               label: "Privacy Policy",
+            ),
+
+            ListButton(
+              label: "Follow Us",
+              callback: (){
+                launch(DefaultConstantCollection.instance.instagramPageURL,
+                  universalLinksOnly: true
+                );
+              }
             ),
 
             ListButton(

@@ -53,4 +53,6 @@ class DefaultConstantCollection{
   
   //privacy policy
   String privacyPolicyURL = "https://sequences-riddle.web.app/privacy-policy.html";
+  //instagram page
+  String  instagramPageURL = "https://www.instagram.com/seq.riddle/";
 }
